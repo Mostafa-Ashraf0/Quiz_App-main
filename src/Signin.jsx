@@ -4,8 +4,9 @@ import { useRef } from 'react';
 import { useAuth } from './context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
 function Signin() {
-    const {signin,setLogged} = useAuth();
+    const {signin} = useAuth();
     const [loading, setLoading] = useState(false);
     const emailRef = useRef();
     const [error, setError] = useState("");
@@ -17,7 +18,6 @@ function Signin() {
             setError("");
             setLoading(true);
             await signin(emailRef.current.value, passwordRef.current.value);
-            setLogged(true);
             navigate('/');
         }catch(err){
             console.error(err);

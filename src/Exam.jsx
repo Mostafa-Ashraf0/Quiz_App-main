@@ -2,6 +2,8 @@ import { useState,useEffect } from 'react'
 import Question from './Question'
 import { Link } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
+import { signOut } from 'firebase/auth'
+import {auth} from './firebase'
 const DummyData = [{
     id: 1,
     question: "What is the capital of France?",
@@ -30,7 +32,7 @@ const DummyData = [{
 export default function Exam(){
     const [questionIndex, setQuestionIndex] = useState(0);
     const [grade, setGrade] = useState(0);
-    const {logged} = useAuth();
+    const {user} = useAuth();
     function handleChange(e){
         if(e.target.value === DummyData[questionIndex].answer){
             alert("rigth answer");
@@ -49,14 +51,23 @@ export default function Exam(){
             setQuestionIndex(questionIndex - 1);
         }
     }
+    async function handelLogout(){
+        try {
+            await signOut(auth);
+            alert("signed out successfuly")
+        }catch (err){
+            console.log(err);
+            alert(err);
+        }
+    }
     useEffect(()=>{
         console.log(grade)
     },[grade])
     return (
         <>
-            {logged?(
+            {user?(
                 <Link to="/Signin">
-                <button>
+                <button onClick={handelLogout}>
                 Log out</button>
             </Link>
             ):
@@ -65,6 +76,13 @@ export default function Exam(){
                 <button>
                 Log in</button>
             </Link>
+            )
+            }
+            {user?(
+                <h2 style={{color:"green"}}><span style={{color:"black"}}>hello</span> {user.email}</h2>
+            ):
+            (
+                <h2>hello Guest</h2>
             )
             }
             <h2>Question {DummyData[questionIndex].id}</h2>

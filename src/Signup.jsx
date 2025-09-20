@@ -2,8 +2,13 @@ import {Card,Form,Button,Alert} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from './context/AuthContext'
 import { useRef, useState } from 'react';
+import {db} from "./firebase"
+import { useNavigate } from 'react-router-dom';
+import { doc, setDoc, Timestamp } from "firebase/firestore"; 
+
 function Signup() {
-    const {signup,setLogged} = useAuth();
+    const navigate = useNavigate();
+    const {signup} = useAuth();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const emailRef = useRef();
@@ -18,8 +23,14 @@ function Signup() {
         try{
             setError("");
             setLoading(true);
-            await signup(emailRef.current.value, passwordRef.current.value);
-            setLogged(true);
+            const userCredential = await signup(emailRef.current.value, passwordRef.current.value);
+            const user = userCredential.user;
+            const userData = {
+                email: user.email,
+                createdAt: Timestamp.now()
+            };
+            await setDoc(doc(db,"users",user.uid),userData);
+            navigate("/");
         }catch(err){
             console.error(err); 
             setError(err.message);
