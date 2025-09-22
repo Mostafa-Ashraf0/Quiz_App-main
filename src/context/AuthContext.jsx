@@ -7,7 +7,8 @@ export const AuthProvider = ({children})=>{
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [logged, setLogged] = useState(false);
-
+    const [add, setAdd] = useState(false);
+    const [question, addQuestion] = useState([]);
     const signup = (email , password)=>{
         return createUserWithEmailAndPassword(auth, email, password);
     };
@@ -34,7 +35,11 @@ export const AuthProvider = ({children})=>{
         signin,
         signout,
         logged,
-        setLogged
+        setLogged,
+        add,
+        setAdd,
+        question,
+        addQuestion
         }}>
             {!loading && children}
         </AuthContext.Provider>

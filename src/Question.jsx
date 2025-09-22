@@ -1,40 +1,15 @@
+function Question({data,index}) {
 
-
-function Question({ id, question, options,setSelected,selected}) {
     return (
         <>
-            <h2>Question{id}</h2>
-            <p>{question}</p>
-                    {options.map((option, index) => (
-                    <div key={`{id}{index}`} className="option">
-                        <input type="checkbox" 
-                    id={`q${id}_option${index}`}
-                    value={option} 
-                    name={option}
-                    checked={selected.find((item) => item.id === id)?.option === option}
-                    onChange={() =>{
-                        setSelected((prevSelected) => {
-                            const existing = prevSelected.find((item) => item.id === id);
-
-                            if (existing) {
-                                if (existing.option === option) {
-                                    return prevSelected.map((item) =>
-                                        item.id === id ? { id:item.id , option: null } : item
-                                    );
-                                } else {
-                                    return prevSelected.map((item) =>
-                                        item.id === id ? { id:item.id, option: option } : item
-                                    );
-                                }
-                            } else {
-                                return [...prevSelected, { id, option }];
-                            }
-                        });
-                    }}
-                    />
-                    <label htmlFor={`q${id}_option${index}`}>{option}</label>
-                    </div>
-                ))}
+            <h1>{index}</h1>
+            <p>{data.questionText}</p>
+            <select name="choose" id="choose">
+                <option value={data.A}>{data.A}</option>
+                <option value={data.B}>{data.B}</option>
+                <option value={data.C}>{data.C}</option>
+                <option value={data.D}>{data.D}</option>
+            </select>
         </>
     )
 }
