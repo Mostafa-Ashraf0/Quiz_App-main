@@ -1,16 +1,18 @@
 function Question({data,index}) {
 
     return (
-        <>
-            <h1>{index}</h1>
-            <p>{data.questionText}</p>
+        <div className="question-body" style={{padding:"10px",backgroundColor:"blue",marginBottom:"10px",color:"white"}}>
+            <div className="title" style={{display:"flex",alignItems:"center",fontSize:"20px"}}>
+                <h3>{index +1}.</h3>
+                <h4>{data.questionText}</h4>
+            </div>
             <select name="choose" id="choose">
                 <option value={data.A}>{data.A}</option>
                 <option value={data.B}>{data.B}</option>
                 <option value={data.C}>{data.C}</option>
                 <option value={data.D}>{data.D}</option>
             </select>
-        </>
+        </div>
     )
 }
 

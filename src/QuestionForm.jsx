@@ -1,14 +1,34 @@
-import { useRef } from "react";
-import { useAuth } from "./context/AuthContext"
+import { useEffect, useRef } from "react";
+import { useAuth } from "./context/AuthContext";
+import { addDoc, collection, onSnapshot } from "firebase/firestore"; 
+import {db} from "./firebase"
+import Form from 'react-bootstrap/Form';
+
 export default function QuestionForm(){
-    const {question, addQuestion} = useAuth();
-    const questionText = useRef();
-    const optionA = useRef();
-    const optionB = useRef();
-    const optionC = useRef();
-    const optionD = useRef();
-    const answer = useRef();
-    const handleSubmit = (e)=>{
+    const {addQuestion, examId} = useAuth();
+    const questionText = useRef(null);
+    const optionA = useRef(null);
+    const optionB = useRef(null);
+    const optionC = useRef(null);
+    const optionD = useRef(null);
+    const answer = useRef(null);
+    useEffect(()=>{
+        if(!examId){
+            return;
+        }
+        const qRef = collection(db,"questions",examId,"items");
+
+        const unsubscribe = onSnapshot(qRef,(snapshot)=>{
+            const qData = snapshot.docs.map((doc)=>({
+                id: doc.id,
+                ...doc.data()
+            }));  
+            addQuestion(qData);
+        })
+        
+        return ()=> unsubscribe();
+    },[examId])
+    const handleSubmit = async(e)=>{
         e.preventDefault();
         const newQuestion = {
             "questionText":questionText.current.value,
@@ -16,9 +36,9 @@ export default function QuestionForm(){
             "B":optionB.current.value,
             "C":optionC.current.value,
             "D":optionD.current.value,
-            "Answer":answer
+            "Answer":answer.current.value
         }
-        addQuestion([...question,newQuestion]);
+        await addDoc(collection(db,"exam",examId,"questions"),newQuestion)
         questionText.current.value = "";
         optionA.current.value = "";
         optionB.current.value = "";
@@ -27,31 +47,33 @@ export default function QuestionForm(){
         answer.current.value = "";
     }
     return(
-        <>
-            <form action="" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Enter question" ref={questionText} required/>
-                <div className="option">
-                    <label htmlFor="a">A:</label>
-                    <input type="text" ref={optionA} required/>
-                </div>
-                <div className="option">
-                    <label htmlFor="a">B:</label>
-                    <input type="text" ref={optionB} required/>
-                </div>
-                <div className="option">
-                    <label htmlFor="a">C:</label>
-                    <input type="text" ref={optionC} required/>
-                </div>
-                <div className="option">
-                    <label htmlFor="a">D:</label>
-                    <input type="text" ref={optionD} required/>
-                </div>
-                <div className="Answer">
-                    <label htmlFor="answer">Answer</label>
-                    <input type="text" ref={answer} required/>
-                </div>
-                <button type="submit">Add</button>
-            </form>
-        </>
+        <div>
+            <Form onSubmit={handleSubmit} className="py-4 px-4 border border-muted rounded-1">
+                <Form.Group className="mb-4" controlId="formGroupEmail">
+                    <Form.Control className="border-0 border-bottom border-primary border-3 rounded-0 bg-light" type="text" placeholder="Enter The Question" ref={questionText} required/>
+                </Form.Group>
+                <Form.Group className="mb-1 d-flex align-items-center w-50">
+                    <Form.Label className="m-0 me-2">A:</Form.Label>
+                    <Form.Control type="text" placeholder="First choise" className="border-0 border-start border-primary border-3 rounded-1 bg-light" ref={optionA} required/>
+                </Form.Group>
+                <Form.Group className="mb-1 d-flex align-items-center w-50">
+                    <Form.Label className="m-0 me-2">B:</Form.Label>
+                    <Form.Control type="text" placeholder="Secound choise" className="border-0 border-start border-primary border-3 rounded-1 bg-light"  ref={optionB} required/>
+                </Form.Group >
+                <Form.Group className="mb-1 d-flex align-items-center w-50">
+                    <Form.Label className="m-0 me-2">C:</Form.Label>
+                    <Form.Control type="text" placeholder="Third choise" className="border-0 border-start border-primary border-3 rounded-1 bg-light"  ref={optionC} required/>
+                </Form.Group>
+                <Form.Group className="mb-3 d-flex align-items-center w-50">
+                    <Form.Label className="m-0 me-2">D:</Form.Label>
+                    <Form.Control type="text" placeholder="Fourth choise" className="border-0 border-start border-primary border-3 rounded-1 bg-light"  ref={optionD} required/>
+                </Form.Group>
+                <Form.Group className="mb-3 d-flex align-items-center w-50">
+                    <Form.Label className="m-0 me-2">Answer:</Form.Label>
+                    <Form.Control type="text" placeholder="Right Answer" className="border-0 border-bottom border-success border-3 rounded-0 bg-light" ref={answer} required/>
+                </Form.Group>
+                <button type="submit" className="btn btn-primary">Add</button>
+            </Form>
+        </div>
     )
 }

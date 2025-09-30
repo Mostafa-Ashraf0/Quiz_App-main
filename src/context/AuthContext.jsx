@@ -9,6 +9,7 @@ export const AuthProvider = ({children})=>{
     const [logged, setLogged] = useState(false);
     const [add, setAdd] = useState(false);
     const [question, addQuestion] = useState([]);
+    const [examId, setExamId] = useState(null);
     const signup = (email , password)=>{
         return createUserWithEmailAndPassword(auth, email, password);
     };
@@ -39,7 +40,9 @@ export const AuthProvider = ({children})=>{
         add,
         setAdd,
         question,
-        addQuestion
+        addQuestion,
+        examId,
+        setExamId
         }}>
             {!loading && children}
         </AuthContext.Provider>
