@@ -3,10 +3,12 @@ import { useAuth } from './context/AuthContext';
 import { collection, addDoc,Timestamp, getDocs} from "firebase/firestore"; 
 import {db} from "./firebase";
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ExamsList = ()=>{
     const {setExamId,user} = useAuth();
     const [exams,setExams] = useState([]);
+    const navigate = useNavigate();
     const handleCreateExam = async()=>{
         try{
             const exam = {
@@ -19,6 +21,11 @@ const ExamsList = ()=>{
         }catch(err){
             alert(err);
         }
+    }
+
+    const handleViewExam = (id)=>{
+            setExamId(id);
+            navigate("./Exam");
     }
 
     useEffect(() => {
@@ -45,7 +52,7 @@ const ExamsList = ()=>{
                     <div class="card-body">
                         <h5 class="card-title">{ex.title}</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Button</a>
+                        <button className='btn btn-primary' onClick={()=>handleViewExam(ex.id)}>View/Edit</button>
                     </div>
                 </div>   
             )):<h2>no exams yet</h2>}
