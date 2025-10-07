@@ -24,7 +24,8 @@ const ExamsList = ()=>{
     }
 
     const handleViewExam = (id)=>{
-            setExamId(id);
+            //setExamId(id);
+            localStorage.setItem("examId",id);
             navigate("./Exam");
     }
 

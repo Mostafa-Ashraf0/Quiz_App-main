@@ -17,7 +17,6 @@ export default function QuestionForm(){
             return;
         }
         const qRef = collection(db,"questions",examId,"items");
-
         const unsubscribe = onSnapshot(qRef,(snapshot)=>{
             const qData = snapshot.docs.map((doc)=>({
                 id: doc.id,
