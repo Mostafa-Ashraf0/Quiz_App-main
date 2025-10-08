@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react"
 import Question from "./Question"
 import QuestionForm from "./QuestionForm";
+import QuestionUpdateForm from "./QuestionUpdateForm";
 import { useAuth } from "./context/AuthContext"
 import { collection, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore"; 
 import {db} from "./firebase"
 import Form from 'react-bootstrap/Form';
+import './updateForm.css'
+
 
 export default function Exam(){
-    const {question,setExamId,examId,addQuestion,user} = useAuth();
+    const {question,setExamId,examId,addQuestion,user,updateFormView} = useAuth();
     const [title, setTitle] = useState("Untitled Exam");
     useEffect(()=>{
         setExamId(localStorage.getItem("examId"));
@@ -56,6 +59,10 @@ export default function Exam(){
 
     return(
         <div className="p-3">
+            {updateFormView && 
+            <div className="update-form">
+              <QuestionUpdateForm/>
+              </div>}
             <input type="text" className="w-75 mb-1" placeholder="Exam Title" value={title} onChange={handleChange}/>
             <QuestionForm/>
             {question && question.map((q, index) => {
