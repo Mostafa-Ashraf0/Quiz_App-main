@@ -58,12 +58,12 @@ export default function Exam(){
     }
 
     return(
-        <div className="p-3">
+        <div className="px-5 py-3">
             {updateFormView && 
             <div className="update-form">
               <QuestionUpdateForm/>
               </div>}
-            <input type="text" className="w-75 mb-1" placeholder="Exam Title" value={title} onChange={handleChange}/>
+            <input type="text" className="w-100 mb-3 py-2 px-4 border-0 border-bottom border-primary bg-light border-5 rounded-0" placeholder="Exam Title" value={title} onChange={handleChange}/>
             <QuestionForm/>
             {question && question.map((q, index) => {
             return <Question key={index} index={index} data={q} />

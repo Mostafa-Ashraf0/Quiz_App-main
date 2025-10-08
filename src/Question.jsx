@@ -7,18 +7,25 @@ function Question({data,index}) {
         setCurrentUpdateData(data);
     }
     return (
-        <div className="question-body" style={{padding:"10px",backgroundColor:"blue",marginBottom:"10px",color:"white"}}>
-            <div className="title" style={{display:"flex",alignItems:"center",fontSize:"20px"}}>
-                <h3>{index +1}.</h3>
+        <div className="question-body bg-light border border-secoundary border-2 rounded-3 p-4 mb-3">
+            <div className="title d-flex align-items-center gap-2 mb-2" style={{fontSize:"20px"}}>
+                <h4>{index +1}-</h4>
                 <h4>{data.questionText}</h4>
             </div>
-            <select name="choose" id="choose">
-                <option value={data.A}>{data.A}</option>
-                <option value={data.B}>{data.B}</option>
-                <option value={data.C}>{data.C}</option>
-                <option value={data.D}>{data.D}</option>
-            </select>
-            <button onClick={()=>handleUpdate(data)} className="btn btn-primary">Update</button>
+            <div className="d-flex align-items-center justify-content-between w-100">
+                <select className="w-25 rounded-3 p-1" name="choose" id="choose" style={{color:"green",fontSize:"18px"}}>
+                    <option value={data.A}>{data.A}</option>
+                    <option value={data.B}>{data.B}</option>
+                    <option value={data.C}>{data.C}</option>
+                    <option value={data.D}>{data.D}</option>
+                </select>
+                <div className="d-flex align-items-center justify-content-between gap-3">
+                    <div className="answer bg-success py-2 px-4 d-flex align-items-center rounded-2" style={{color:"white"}}>
+                        <span className="m-0 p-0">Answer: {data.Answer}</span>
+                    </div>
+                    <button onClick={()=>handleUpdate(data)} className="btn btn-primary">Update</button>
+                </div>
+            </div>
         </div>
     )
 }

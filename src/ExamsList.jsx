@@ -47,17 +47,19 @@ const ExamsList = ()=>{
         }, [user.uid]);
     return(
         <div className='p-5 d-flex flex-column gap-3'>
-            {console.log(exams)}
+            <div className="head d-flex align-items-center gap-5 mb-3">
+                <h3>Exams List</h3>
+                <Link to={"/Exam"}><button onClick={handleCreateExam} className='btn btn-success'>Create new exam</button></Link>
+            </div>
             {exams.length>0?exams.map((ex)=>(
-               <div class="card w-75" key={ex.id}>
-                    <div class="card-body">
-                        <h5 class="card-title">{ex.title}</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <button className='btn btn-primary' onClick={()=>handleViewExam(ex.id)}>View/Edit</button>
+               <div class="card w-50 " key={ex.id}>
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <h5 class="card-title p-0 m-0">{ex.title}</h5>
+                        <button className='btn btn-light border border-secoundary' onClick={()=>handleViewExam(ex.id)}>View/Edit</button>
                     </div>
                 </div>   
             )):<h2>no exams yet</h2>}
-            <Link to={"/Exam"}><button onClick={handleCreateExam} className='btn btn-secondary'>Create new exam</button></Link>
+            
         </div>
     )
 }
