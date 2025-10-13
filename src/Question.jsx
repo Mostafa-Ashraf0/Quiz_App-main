@@ -1,10 +1,21 @@
 import { useAuth } from "./context/AuthContext"
+import { db } from './firebase';
+import { doc, deleteDoc } from 'firebase/firestore';
 
 function Question({data,index}) {
-    const {setUpdateFormView,setCurrentUpdateData} = useAuth();
+    const {setUpdateFormView,setCurrentUpdateData,examId} = useAuth();
     const handleUpdate = (data)=>{
         setUpdateFormView(true);
         setCurrentUpdateData(data);
+    }
+    const handleDelete = async()=>{
+        try{
+            const qRef = doc(db, "exam", examId, "questions", data.id);
+            await deleteDoc(qRef);
+            alert("question Deleted");
+        }catch(err){
+            alert(err);
+        }
     }
     return (
         <div className="question-body bg-light border border-secoundary border-2 rounded-3 p-4 mb-3">
@@ -24,6 +35,7 @@ function Question({data,index}) {
                         <span className="m-0 p-0">Answer: {data.Answer}</span>
                     </div>
                     <button onClick={()=>handleUpdate(data)} className="btn btn-primary">Update</button>
+                    <button onClick={()=>handleDelete(data)} className="btn btn-primary">Delete</button>
                 </div>
             </div>
         </div>

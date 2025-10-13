@@ -40,9 +40,9 @@ function Signup() {
         
     }
   return (
-    <>
+    <div className='d-flex flex-column align-items-center justify-content-center h-100'>
     <Card style={{width:"400px"}}>
-        <Card.Body>
+        <Card.Body className='p-4'>
             <h2 className='mb-4 text-center'>Sign Up</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmet}>
@@ -65,7 +65,7 @@ function Signup() {
         </Card.Body>
     </Card>
     <div className='w-100 text-center mt-2'>I have an account <Link to='/Signin'>Log in</Link></div>
-    </>
+    </div>
   );
 }
 

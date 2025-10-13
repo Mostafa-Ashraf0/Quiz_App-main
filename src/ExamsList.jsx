@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
-import { collection, addDoc,Timestamp, getDocs} from "firebase/firestore"; 
+import { collection, addDoc,Timestamp, getDocs, deleteDoc,doc} from "firebase/firestore"; 
 import {db} from "./firebase";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -22,6 +22,26 @@ const ExamsList = ()=>{
             alert(err);
         }
     }
+        const handleDeleteExam = async(id)=>{
+            try{
+                //delete examId from user
+                const userExamRef = doc(db, `users/${user.uid}/exams`, id);
+                await deleteDoc(userExamRef);
+
+                //delete all questions
+                const questionsSnap = await getDocs(collection(db, `exam/${id}/questions`));
+                for (const q of questionsSnap.docs) {
+                await deleteDoc(q.ref);
+                }
+                //delete examId from exams
+                const examRef = doc(db, "exam", id);
+                await deleteDoc(examRef);
+                alert("Exam Deleted");
+
+            }catch(err){
+                alert(err);
+            }
+        }
 
     const handleViewExam = (id)=>{
             //setExamId(id);
@@ -30,6 +50,7 @@ const ExamsList = ()=>{
     }
 
     useEffect(() => {
+        if(!user) return;
         const fetchExams = async () => {
             try {
                 const snapshot = await getDocs(collection(db,`users/${user.uid}/exams`));       
@@ -44,7 +65,7 @@ const ExamsList = ()=>{
         };
 
         fetchExams();
-        }, [user.uid]);
+        }, [user,exams]);
     return(
         <div className='p-5 d-flex flex-column gap-3'>
             <div className="head d-flex align-items-center gap-5 mb-3">
@@ -55,7 +76,10 @@ const ExamsList = ()=>{
                <div class="card w-50 " key={ex.id}>
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h5 class="card-title p-0 m-0">{ex.title}</h5>
-                        <button className='btn btn-light border border-secoundary' onClick={()=>handleViewExam(ex.id)}>View/Edit</button>
+                        <div className="buttons d-flex gap-2">
+                            <button className='btn btn-light border border-secoundary' onClick={()=>handleViewExam(ex.id)}>View/Edit</button>
+                            <button className='btn btn-danger' onClick={()=>handleDeleteExam(ex.id)}>Delete</button>
+                        </div>
                     </div>
                 </div>   
             )):<h2>no exams yet</h2>}
