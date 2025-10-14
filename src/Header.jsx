@@ -16,10 +16,10 @@ const Header = ()=>{
         }
     return(
         <>
-            <header className="d-flex align-items-center justify-content-between p-4 bg-light" style={{height:"60px"}}>
+            <header className="d-flex align-items-center justify-content-between p-4" style={{height:"70px",boxShadow:"0 8px 32px rgba(0, 0, 0, 0.3)",background:"linear-gradient(90deg, #2a5298 0%, #1e3c72 100%)",color:"white"}}>
                 <div className="user d-flex align-items-center gap-2">
                     {user?(
-                    <span style={{color:"green"}}><span style={{color:"black"}}>hello,</span> {user.email}</span>
+                    <span>hello, <span style={{color:"green"}}>{user.email}</span></span>
                     ):
                     (
                         <h2>hello Guest</h2>

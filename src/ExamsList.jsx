@@ -73,11 +73,11 @@ const ExamsList = ()=>{
                 <Link to={"/Exam"}><button onClick={handleCreateExam} className='btn btn-success'>Create new exam</button></Link>
             </div>
             {exams.length>0?exams.map((ex)=>(
-               <div class="card w-50 " key={ex.id}>
+               <div class="card w-50 " key={ex.id} style={{boxShadow:"0 8px 32px rgba(0, 0, 0, 0.3)",background:"rgba(255, 255, 255, 0.1)",color:"white"}}>
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h5 class="card-title p-0 m-0">{ex.title}</h5>
                         <div className="buttons d-flex gap-2">
-                            <button className='btn btn-light border border-secoundary' onClick={()=>handleViewExam(ex.id)}>View/Edit</button>
+                            <button className='btn btn-primary' onClick={()=>handleViewExam(ex.id)}>View/Edit</button>
                             <button className='btn btn-danger' onClick={()=>handleDeleteExam(ex.id)}>Delete</button>
                         </div>
                     </div>
