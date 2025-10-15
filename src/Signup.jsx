@@ -66,7 +66,7 @@ function Signup() {
         </Card.Body>
     </Card>
         <div className='w-100 text-center mt-2' style={{color:"#66a6ff",textShadow:"0 0 10px rgba(255,255,255,0.5)"}}>
-            I have an account <Link to='/Signin' style={{color:"white"}}>Log in</Link>
+            I have an account <Link to='/' style={{color:"white"}}>Log in</Link>
         </div>
     </div>
   );

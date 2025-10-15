@@ -30,12 +30,12 @@ const Header = ()=>{
                     </div>
                 </div>
                 {user?(
-                <Link to="/Signin">
+                <Link to="/">
                 <button type="button" class="btn btn-primary" onClick={handelLogout}>Log Out</button>
                 </Link>
                 ):
                 (
-                <Link to="/Signin">
+                <Link to="/">
                     <button type="button" class="btn btn-primary">Log In</button>
                 </Link>
                 )

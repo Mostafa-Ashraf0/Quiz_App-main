@@ -12,10 +12,10 @@ function App() {
   return (
       <Router>
         <Routes>
-          <Route path='/' element={<Home/>}></Route>
+          <Route path='/home' element={<Home/>}></Route>
           <Route path='/Exam' element={<Exam/>}></Route>
           <Route path='/Signup' element={<Signup/>}></Route>
-          <Route path='/Signin' element={<Signin/>}></Route>
+          <Route path='/' element={<Signin/>}></Route>
           <Route path='/ForgotPassword' element={<ForgotPassword/>}></Route>
           <Route path='/Submit' element={<SubmitForm/>}></Route>
         </Routes>

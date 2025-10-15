@@ -18,7 +18,7 @@ function Signin() {
             setError("");
             setLoading(true);
             await signin(emailRef.current.value, passwordRef.current.value);
-            navigate('/');
+            navigate('/home');
         }catch(err){
             console.error(err);
             setError(err.message);
