@@ -29,7 +29,7 @@ const ExamSubmit = ()=>{
     return(
         <form>
             {question && question.map((q,index)=>{
-                return <QuestionSubmit key={index} index={index} data={q}/>
+                return <QuestionSubmit key={q.id} id={q.id} data={q} index={index}/>
             })}
             <button type="Submit" className="btn btn-primary">Submit</button>
         </form>

@@ -6,7 +6,7 @@ import { useAuth } from "./context/AuthContext"
 import { collection, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore"; 
 import {db} from "./firebase"
 import Form from 'react-bootstrap/Form';
-import './updateForm.css'
+import './updateForm.css';
 
 
 export default function Exam(){
