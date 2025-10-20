@@ -6,6 +6,7 @@ import ForgotPassword from './ForgotPassword';
 import SubmitForm from './SubmitForm';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Exam from './Exam';
+import ExamSubmit from './ExamSubmit';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path='/home' element={<Home/>}></Route>
           <Route path='/home/Exam' element={<Exam/>}></Route>
+          <Route path='/home/Exam/:examId' element={<ExamSubmit/>}></Route>
           <Route path='/Signup' element={<Signup/>}></Route>
           <Route path='/' element={<Signin/>}></Route>
           <Route path='/ForgotPassword' element={<ForgotPassword/>}></Route>

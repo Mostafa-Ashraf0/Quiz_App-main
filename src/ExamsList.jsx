@@ -48,6 +48,9 @@ const ExamsList = ()=>{
             localStorage.setItem("examId",id);
             navigate("./Exam");
     }
+    const handleLink = (id)=>{
+            navigate(`./Exam/${id}`);
+    }
 
     useEffect(() => {
         if(!user) return;
@@ -78,6 +81,7 @@ const ExamsList = ()=>{
                         <h5 class="card-title p-0 m-0">{ex.title}</h5>
                         <div className="buttons d-flex gap-2">
                             <button className='btn btn-primary' onClick={()=>handleViewExam(ex.id)}>View/Edit</button>
+                            <button className='btn btn-primary' onClick={()=>handleLink(ex.id)}>link</button>
                             <button className='btn btn-danger' onClick={()=>handleDeleteExam(ex.id)}>Delete</button>
                         </div>
                     </div>
