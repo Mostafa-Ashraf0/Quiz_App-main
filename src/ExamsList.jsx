@@ -73,7 +73,7 @@ const ExamsList = ()=>{
         <div className='p-5 d-flex flex-column gap-3'>
             <div className="head d-flex align-items-center gap-5 mb-3">
                 <h3>Exams List</h3>
-                <Link to={"/Exam"}><button onClick={handleCreateExam} className='btn btn-success'>Create new exam</button></Link>
+                <Link to={"./Exam"}><button onClick={handleCreateExam} className='btn btn-success'>Create new exam</button></Link>
             </div>
             {exams.length>0?exams.map((ex)=>(
                <div class="card w-50 " key={ex.id} style={{boxShadow:"0 8px 32px rgba(0, 0, 0, 0.3)",background:"rgba(255, 255, 255, 0.1)",color:"white"}}>
