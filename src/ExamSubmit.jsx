@@ -1,5 +1,5 @@
-import { useEffect } from "react"
-import Question from "./Question"
+import { useEffect } from "react";
+import Question from "./Question";
 import QuestionForm from "./QuestionForm";
 import QuestionUpdateForm from "./QuestionUpdateForm";
 import { useAuth } from "./context/AuthContext"
@@ -7,12 +7,15 @@ import { collection, getDocs } from "firebase/firestore";
 import {db} from "./firebase";
 import Form from 'react-bootstrap/Form';
 import QuestionSubmit from "./QuestionSubmit";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import FinalResult from "./FinalResult";
 
 
 const ExamSubmit = ()=>{
-        const {question,addQuestion} = useAuth();
+        const {question,addQuestion,submition,setGrade,loading,setLoading} = useAuth();
         const { examId } = useParams();
+        const navigate = useNavigate();
+
         useEffect(() => {
           if (!examId) return;
           addQuestion([]);//make sure not to add questions from another exam
@@ -21,19 +24,38 @@ const ExamSubmit = ()=>{
             const snapshot = await getDocs(qRef);
             const qData = snapshot.docs.map(doc=>({ id: doc.id, ...doc.data() }))
             addQuestion(qData); 
-            console.log(qData);
+            setLoading(false)
           };
           fectchQuestion();
         }, [examId]);
-    
-    return(
-        <form>
+
+        // correction logic
+        const handleSubmit = (e)=>{
+          e.preventDefault();
+          let finalGrade = 0;
+          submition.forEach(a=>{
+            const originalQ = question.find(q=>(q.id === a.qId));
+            if(a.answer === originalQ.Answer){
+              finalGrade++;
+            }
+        });
+        setGrade(finalGrade);
+        navigate("/finalResult");
+        }
+
+
+      if(loading){
+        return <h2>loading...</h2>
+      }else{
+        return(
+          <form onSubmit={handleSubmit} className="p-4">
             {question && question.map((q,index)=>{
                 return <QuestionSubmit key={q.id} id={q.id} data={q} index={index}/>
             })}
             <button type="Submit" className="btn btn-primary">Submit</button>
-        </form>
-    )
+          </form>
+        )
+      }
 };
 
 export default ExamSubmit;

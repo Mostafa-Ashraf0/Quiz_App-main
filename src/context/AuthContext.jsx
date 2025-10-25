@@ -14,6 +14,7 @@ export const AuthProvider = ({children})=>{
     const [currentUpdateData, setCurrentUpdateData] = useState(null);
     const [studentName, setStudentName] = useState(null);
     const [submition, setSubmition] = useState([]);
+    const [grade, setGrade] = useState(0);
     const signup = (email , password)=>{
         return createUserWithEmailAndPassword(auth, email, password);
     };
@@ -54,7 +55,11 @@ export const AuthProvider = ({children})=>{
         studentName,
         setStudentName,
         submition,
-        setSubmition
+        setSubmition,
+        grade,
+        setGrade,
+        loading,
+        setLoading
         }}>
             {!loading && children}
         </AuthContext.Provider>
