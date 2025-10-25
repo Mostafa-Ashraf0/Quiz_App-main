@@ -5,7 +5,7 @@ const SubmitForm = ()=>{
     const navigate = useNavigate();
     const { examId } = useParams();
     const handleSubmit = ()=>{
-        navigate(`/${examId}`)
+        navigate(`/exam/${examId}`)
     }
     return(
         <div className='d-flex align-items-center justify-content-center h-100'>

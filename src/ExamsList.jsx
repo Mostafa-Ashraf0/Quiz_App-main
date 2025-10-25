@@ -49,7 +49,7 @@ const ExamsList = ()=>{
             navigate("./Exam");
     }
     const handleLink = (id)=>{
-            navigate(`/${id}`);
+            navigate(`/exam/${id}`);
     }
 
     useEffect(() => {
