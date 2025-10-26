@@ -1,0 +1,41 @@
+header{
+    height: 70px;
+    width: calc(100% - 240px);
+    position: fixed;
+    top: 0;
+    left: 240px;
+    background-color: white;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+header .userSection{
+    padding: 10px;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.685);
+    font-size: 16px;
+    background-color: rgba(231, 231, 231, 0.603);
+}
+
+.right{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+header button{
+    background-color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(71, 71, 71, 0.897);
+}
+
+header .title{
+    font-size: 24px;
+    font-weight: 400;
+}

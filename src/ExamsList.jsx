@@ -4,7 +4,7 @@ import { collection, addDoc,Timestamp, getDocs, deleteDoc,doc} from "firebase/fi
 import {db} from "./firebase";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import './assets/examsList.css'
 const ExamsList = ()=>{
     const {setExamId,user} = useAuth();
     const [exams,setExams] = useState([]);
@@ -70,19 +70,33 @@ const ExamsList = ()=>{
         fetchExams();
         }, [user,exams]);
     return(
-        <div className='p-5 d-flex flex-column gap-3'>
-            <div className="head d-flex align-items-center gap-5 mb-3">
+        <div className='px-4 py-5 d-flex flex-column gap-3'>
+            <div className="head d-flex align-items-center justify-content-between gap-5 mb-3">
                 <h3>Exams List</h3>
-                <Link to={"./Exam"}><button onClick={handleCreateExam} className='btn btn-success'>Create new exam</button></Link>
+                <Link to={"./Exam"} style={{textDecoration:"none"}}>
+                    <button onClick={handleCreateExam} className='create btn btn-primary'>
+                        <i class="fa-solid fa-plus"></i>New Exam
+                    </button>
+                </Link>
             </div>
             {exams.length>0?exams.map((ex)=>(
-               <div class="card w-50 " key={ex.id} style={{boxShadow:"0 8px 32px rgba(0, 0, 0, 0.3)",background:"rgba(255, 255, 255, 0.1)",color:"white"}}>
+               <div class="card w-100 " key={ex.id} style={{boxShadow:"0 8px 32px rgba(0, 0, 0, 0.3)",background:"rgba(255, 255, 255, 0.1)"}}>
                     <div class="card-body d-flex justify-content-between align-items-center">
-                        <h5 class="card-title p-0 m-0">{ex.title}</h5>
+                        <div className="examInfo">
+                            <h5 class="card-title p-0 m-0">{ex.title}</h5>
+                            <div className="small">
+                                <ul>
+                                    <li>Exam Id: {ex.id} </li>
+                                    <li>|</li>
+                                    <li>10 Questions</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <span className='date-time'>{ex.createdAt.toDate().toLocaleString()}</span>
                         <div className="buttons d-flex gap-2">
-                            <button className='btn btn-primary' onClick={()=>handleViewExam(ex.id)}>View/Edit</button>
-                            <button className='btn btn-primary' onClick={()=>handleLink(ex.id)}>link</button>
-                            <button className='btn btn-danger' onClick={()=>handleDeleteExam(ex.id)}>Delete</button>
+                            <button className='view btn btn-primary' onClick={()=>handleViewExam(ex.id)}><i class="fa-solid fa-eye"></i>View/Edit</button>
+                            <button className='update btn btn-warning' onClick={()=>handleLink(ex.id)}><i class="fa-solid fa-share-nodes"></i>Share</button>
+                            <button className='delete btn btn-danger' onClick={()=>handleDeleteExam(ex.id)}><i class="fa-solid fa-trash"></i>Delete</button>
                         </div>
                     </div>
                 </div>   

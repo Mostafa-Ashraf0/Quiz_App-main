@@ -1,11 +1,20 @@
 import {Card,Form,Button,Alert} from 'react-bootstrap';
 import { useNavigate,useParams } from 'react-router-dom';
+import { useAuth } from "./context/AuthContext";
+import { useState } from 'react';
 
 const SubmitForm = ()=>{
+    const [sName, setSName] = useState(null);
+    const { setSubmition } = useAuth();
     const navigate = useNavigate();
     const { examId } = useParams();
-    const handleSubmit = ()=>{
-        navigate(`/exam/${examId}`)
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        setSubmition({name:sName,q:[]});
+        navigate(`/exam/${examId}`);
+    }
+    const handleChange = (e)=>{
+        setSName(e.target.value);
     }
     return(
         <div className='d-flex align-items-center justify-content-center h-100'>
@@ -18,7 +27,7 @@ const SubmitForm = ()=>{
                 <Form onSubmit={handleSubmit} className='d-flex flex-column gap-3'>
                     <Form.Group>
                         <Form.Label>Full Name</Form.Label>
-                        <Form.Control type='text' required/>
+                        <Form.Control type='text' onChange={handleChange} required/>
                     </Form.Group>
                     <Button type='submit'>Start Exam</Button>
                 </Form>

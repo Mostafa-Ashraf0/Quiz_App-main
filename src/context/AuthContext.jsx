@@ -13,7 +13,7 @@ export const AuthProvider = ({children})=>{
     const [updateFormView, setUpdateFormView] = useState(false);
     const [currentUpdateData, setCurrentUpdateData] = useState(null);
     const [studentName, setStudentName] = useState(null);
-    const [submition, setSubmition] = useState([]);
+    const [submition, setSubmition] = useState({name:"", q:[]});
     const [grade, setGrade] = useState(0);
     const signup = (email , password)=>{
         return createUserWithEmailAndPassword(auth, email, password);

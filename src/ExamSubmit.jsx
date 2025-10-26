@@ -3,7 +3,7 @@ import Question from "./Question";
 import QuestionForm from "./QuestionForm";
 import QuestionUpdateForm from "./QuestionUpdateForm";
 import { useAuth } from "./context/AuthContext"
-import { collection, getDocs } from "firebase/firestore"; 
+import { addDoc, collection, getDocs } from "firebase/firestore"; 
 import {db} from "./firebase";
 import Form from 'react-bootstrap/Form';
 import QuestionSubmit from "./QuestionSubmit";
@@ -12,7 +12,7 @@ import FinalResult from "./FinalResult";
 
 
 const ExamSubmit = ()=>{
-        const {question,addQuestion,submition,setGrade,loading,setLoading} = useAuth();
+        const {question,addQuestion,submition,setSubmition,setGrade,loading,setLoading} = useAuth();
         const { examId } = useParams();
         const navigate = useNavigate();
 
@@ -32,14 +32,24 @@ const ExamSubmit = ()=>{
         // correction logic
         const handleSubmit = (e)=>{
           e.preventDefault();
+          // check if all questions answered
+          if(question.length !== submition.q.length){
+            alert("please answer all questions");
+            console.log(submition);
+            return;
+          }
           let finalGrade = 0;
-          submition.forEach(a=>{
+          submition.q.forEach(a=>{
             const originalQ = question.find(q=>(q.id === a.qId));
             if(a.answer === originalQ.Answer){
               finalGrade++;
             }
         });
         setGrade(finalGrade);
+        const submitRef = collection(db, `exam/${examId}/submitions`);
+        addDoc(submitRef, submition);
+        console.log(submition);
+        setSubmition({name:"", q:[]});
         navigate("/finalResult");
         }
 

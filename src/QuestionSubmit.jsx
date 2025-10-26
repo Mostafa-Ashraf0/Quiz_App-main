@@ -5,13 +5,16 @@ function QuestionSubmit({data,index,id}) {
     const handleChange = (e)=>{
         const selected = e.target.value;
         setSubmition(prev=>{
-            const existing = prev.find(a => a.qId === id);
+            const existing = prev.q.find(a => a.qId === id);
             if(existing){
-                return prev.map(a =>{
-                    return a.qId === id? {...a, answer: selected}: a;
-                })
+                return {
+                    ...prev,
+                    q: prev.q.map(a =>
+                    a.qId === id ? { ...a, answer: selected } : a
+                    )
+                };
             }else{
-                return [...prev, {qId:id, answer:selected}];
+                return {...prev, q:[...prev.q, {qId:id, answer:selected}]}
             }
         })
     }

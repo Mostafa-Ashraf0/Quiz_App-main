@@ -1,0 +1,29 @@
+.create,
+.view,
+.update,
+.delete{
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.examInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.examInfo .small ul{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+    list-style-type: none;
+}
+
+.date-time{
+    font-weight: 500;
+    font-size: 15px;
+}

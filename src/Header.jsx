@@ -2,8 +2,9 @@ import { signOut } from 'firebase/auth';
 import {auth} from './firebase';
 import { useAuth } from './context/AuthContext';
 import { Link } from 'react-router-dom';
+import './assets/header.css';
 
-const Header = ()=>{
+const Header = ({title})=>{
         const {user} = useAuth();
         async function handelLogout(){
             try {
@@ -16,10 +17,12 @@ const Header = ()=>{
         }
     return(
         <>
-            <header className="d-flex align-items-center justify-content-between p-4" style={{height:"70px",boxShadow:"0 8px 32px rgba(0, 0, 0, 0.3)",background:"linear-gradient(90deg, #2a5298 0%, #1e3c72 100%)",color:"white"}}>
-                <div className="user d-flex align-items-center gap-2">
+            <header className="d-flex align-items-center justify-content-between">
+                <span className='title'>{title}</span>
+                <div className="right">
+                    <div className="userSection user d-flex align-items-center gap-3">
                     {user?(
-                    <span>hello, <span style={{color:"green"}}>{user.email}</span></span>
+                    <span style={{fontWeight:"bold"}}>Hello, <span style={{fontWeight:"normal"}}>{user.email}</span></span>
                     ):
                     (
                         <h2>hello Guest</h2>
@@ -28,18 +31,19 @@ const Header = ()=>{
                     <div className="icon">
                         <i class="fa-regular fa-user"></i>
                     </div>
+                    </div>
+                    {user?(
+                        <Link style={{textDecoration:"none"}} to="/">
+                        <button type="button"onClick={handelLogout}><i class="fa-solid fa-right-from-bracket"></i>Log out</button>
+                        </Link>
+                        ):
+                        (
+                        <Link to="/">
+                            <button type="button">Log In</button>
+                        </Link>
+                        )
+                    }
                 </div>
-                {user?(
-                <Link to="/">
-                <button type="button" class="btn btn-primary" onClick={handelLogout}>Log Out</button>
-                </Link>
-                ):
-                (
-                <Link to="/">
-                    <button type="button" class="btn btn-primary">Log In</button>
-                </Link>
-                )
-                }
                 
             </header>
         </>
