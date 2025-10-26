@@ -1,0 +1,35 @@
+.popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: #0f1e33;
+    color: black;
+    border: solid 1px grey;
+    border-radius: 5px;
+    min-width: 600px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.link{
+    background-color: #19355c;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.btns{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btns i{
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+}

@@ -21,6 +21,9 @@ const Sidebar = ()=>{
             alert(err);
         }
     }
+    const handleDashboard = ()=>{
+        navigate("/home")
+    }
     return(
         <div className='sidebar'>
             <div className='icon'>
@@ -28,7 +31,7 @@ const Sidebar = ()=>{
             </div>
             <div className="master">
                 <ul>
-                    <li><i class="fa-solid fa-grip"></i>Dashboard</li>
+                    <li onClick={handleDashboard}><i class="fa-solid fa-grip"></i>Dashboard</li>
                     <li onClick={handleCreateExam}><i class="fa-solid fa-square-plus"></i>Create New Exam</li>
                     <li><i class="fa-solid fa-chart-simple"></i>Analytics</li>
                     <li><i class="fa-solid fa-gears"></i>Settings</li>

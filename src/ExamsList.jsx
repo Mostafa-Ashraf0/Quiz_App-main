@@ -4,10 +4,12 @@ import { collection, addDoc,Timestamp, getDocs, deleteDoc,doc} from "firebase/fi
 import {db} from "./firebase";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './assets/examsList.css'
+import './assets/examsList.css';
+import LinkPopup from './LinkPopup';
 const ExamsList = ()=>{
-    const {setExamId,user} = useAuth();
+    const {setExamId,user,setPopupView} = useAuth();
     const [exams,setExams] = useState([]);
+    const [link, setLink] = useState(null);
     const navigate = useNavigate();
     const handleCreateExam = async()=>{
         try{
@@ -48,8 +50,10 @@ const ExamsList = ()=>{
             localStorage.setItem("examId",id);
             navigate("./Exam");
     }
-    const handleLink = (id)=>{
-            navigate(`/exam/${id}`);
+    const handleShare = (id)=>{
+        const link = `${window.location.origin}/exam/${id}/form`;
+        setLink(link);
+        setPopupView(true);
     }
 
     useEffect(() => {
@@ -71,6 +75,7 @@ const ExamsList = ()=>{
         }, [user,exams]);
     return(
         <div className='px-4 py-5 d-flex flex-column gap-3'>
+            <LinkPopup link={link}/>
             <div className="head d-flex align-items-center justify-content-between gap-5 mb-3">
                 <h3>Exams List</h3>
                 <Link to={"./Exam"} style={{textDecoration:"none"}}>
@@ -95,7 +100,7 @@ const ExamsList = ()=>{
                         <span className='date-time'>{ex.createdAt.toDate().toLocaleString()}</span>
                         <div className="buttons d-flex gap-2">
                             <button className='view btn btn-primary' onClick={()=>handleViewExam(ex.id)}><i class="fa-solid fa-eye"></i>View/Edit</button>
-                            <button className='update btn btn-warning' onClick={()=>handleLink(ex.id)}><i class="fa-solid fa-share-nodes"></i>Share</button>
+                            <button className='update btn btn-warning' onClick={()=>handleShare(ex.id)}><i class="fa-solid fa-share-nodes"></i>Share</button>
                             <button className='delete btn btn-danger' onClick={()=>handleDeleteExam(ex.id)}><i class="fa-solid fa-trash"></i>Delete</button>
                         </div>
                     </div>

@@ -11,6 +11,7 @@ export const AuthProvider = ({children})=>{
     const [question, addQuestion] = useState([]);
     const [examId, setExamId] = useState(null);
     const [updateFormView, setUpdateFormView] = useState(false);
+    const [popupView, setPopupView] = useState(false);
     const [currentUpdateData, setCurrentUpdateData] = useState(null);
     const [studentName, setStudentName] = useState(null);
     const [submition, setSubmition] = useState({name:"", q:[]});
@@ -50,6 +51,8 @@ export const AuthProvider = ({children})=>{
         setExamId,
         updateFormView,
         setUpdateFormView,
+        popupView,
+        setPopupView,
         currentUpdateData,
         setCurrentUpdateData,
         studentName,

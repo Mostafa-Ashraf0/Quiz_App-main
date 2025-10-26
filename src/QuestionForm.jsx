@@ -49,14 +49,15 @@ export default function QuestionForm() {
     };
 
     return (
-            <Form onSubmit={handleSubmit} className="p-4 border border-muted rounded-1 mb-3">
+            <Form onSubmit={handleSubmit} className="p-4 border border-muted rounded-1 mb-3" style={{backgroundColor:"white"}}>
                 <Form.Group className="mb-4" controlId="formGroupEmail">
                     <Form.Control
-                        className="border-0 border-bottom border-primary border-3 rounded-0 bg-light"
+                        className="bg-light"
                         type="text"
                         placeholder="Enter The Question"
                         ref={questionText}
                         required
+                        style={{borderBottom:"solid 5px #0F1E33"}}
                     />
                 </Form.Group>
 

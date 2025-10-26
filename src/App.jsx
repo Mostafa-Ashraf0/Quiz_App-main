@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Exam from './Exam';
 import ExamSubmit from './ExamSubmit';
 import FinalResult from './FinalResult';
-
+import CreateExam from './CreateExam';
 function App() {
 
   return (
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path='/finalResult' element={<FinalResult/>}></Route>
           <Route path='/home' element={<Home/>}></Route>
-          <Route path='/home/Exam' element={<Exam/>}></Route>
+          <Route path='/home/Exam' element={<CreateExam/>}></Route>
           <Route path='/exam/:examId' element={<ExamSubmit/>}></Route>
           <Route path='/Signup' element={<Signup/>}></Route>
           <Route path='/' element={<Signin/>}></Route>

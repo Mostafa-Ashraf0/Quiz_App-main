@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import Question from "./Question";
+import { useEffect, useState } from "react"
+import Question from "./Question"
 import QuestionForm from "./QuestionForm";
 import QuestionUpdateForm from "./QuestionUpdateForm";
 import { useAuth } from "./context/AuthContext"
@@ -63,7 +63,7 @@ export default function Exam(){
             <div className="update-form">
               <QuestionUpdateForm/>
               </div>}
-            <input type="text" className="w-100 mb-3 py-2 px-4 border-0 border-bottom border-primary bg-light border-5 rounded-0" placeholder="Exam Title" value={title} onChange={handleChange}/>
+            <input type="text" className="w-100 mb-3 py-2 px-4 border-0 border-bottom bg-white border-5 rounded-0" placeholder="Exam Title" value={title} onChange={handleChange}/>
             <QuestionForm/>
             {question && question.map((q, index) => {
             return <Question key={index} index={index} data={q} />

@@ -46,7 +46,7 @@ const QuestionUpdateForm = ()=>{
         setCurrentQData(prev => ({ ...prev, [name]: value }));
     }; 
     return(
-            <Form onSubmit={handleUpdate} className="form-body py-4 px-4 border border-muted rounded-1">
+            <Form onSubmit={handleUpdate} className="form-body py-4 px-4">
                 <Form.Group className="mb-4" controlId="formGroupEmail">
                     <Form.Control 
                     className="border-0 border-bottom border-primary border-3 rounded-0 bg-light"
@@ -111,8 +111,10 @@ const QuestionUpdateForm = ()=>{
                           value={currentQData.Answer}
                            required/>
                 </Form.Group>
-                <button type="submit" className="btn btn-primary">Update</button>
-                <button onClick={handleClose}>Close</button>
+                <div className="controls">
+                    <button type="submit" className="btn btn-primary">Update</button>
+                    <button className="btn btn-danger" onClick={handleClose}>Close</button>
+                </div>
             </Form>
     )
 }

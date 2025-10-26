@@ -18,13 +18,13 @@ function Question({data,index}) {
         }
     }
     return (
-        <div className="question-body bg-light border border-secoundary border-2 rounded-3 p-4 mb-3">
-            <div className="title d-flex align-items-center gap-2 mb-2" style={{fontSize:"20px"}}>
-                <h4>{index +1}-</h4>
-                <h4>{data.questionText}</h4>
+        <div className="question-body bg-white border border-1 border-secoundary rounded-2 py-3 px-4 mb-3">
+            <div className="title d-flex align-items-center gap-2 mb-2" style={{fontSize:"20px",color:"#0F1E33"}}>
+                <h5 style={{margin:"0"}}>{`${index +1})`}</h5>
+                <p style={{margin:"0"}}>{data.questionText}</p>
             </div>
             <div className="d-flex align-items-center justify-content-between w-100">
-                <select className="w-25 rounded-3 p-1" name="choose" id="choose" style={{color:"green",fontSize:"18px"}}>
+                <select className="w-25 rounded-1 p-1" name="choose" id="choose" style={{color:"#0F1E33",fontSize:"15px",height:"35px",fontWeight:"500"}}>
                     <option value={data.A}>{data.A}</option>
                     <option value={data.B}>{data.B}</option>
                     <option value={data.C}>{data.C}</option>
@@ -34,7 +34,7 @@ function Question({data,index}) {
                     <div className="answer bg-success py-2 px-4 d-flex align-items-center rounded-2" style={{color:"white"}}>
                         <span className="m-0 p-0">Answer: {data.Answer}</span>
                     </div>
-                    <button onClick={()=>handleUpdate(data)} className="btn btn-primary">Update</button>
+                    <button onClick={()=>handleUpdate(data)} className="btn btn-warning">Update</button>
                     <button onClick={()=>handleDelete(data)} className="btn btn-primary">Delete</button>
                 </div>
             </div>
