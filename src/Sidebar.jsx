@@ -1,4 +1,4 @@
-import './assets/Sidebar.css';
+import './assets/sidebar.css';
 import logo from './assets/logo.svg';
 import { useAuth } from './context/AuthContext';
 import { collection, addDoc,Timestamp} from "firebase/firestore"; 
