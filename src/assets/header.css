@@ -39,3 +39,8 @@ header .title{
     font-size: 24px;
     font-weight: 400;
 }
+
+header.mini{
+    width: calc(100% - 70px);
+    left: 70px;
+}

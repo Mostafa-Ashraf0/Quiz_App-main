@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './assets/header.css';
 
 const Header = ({title})=>{
-        const {user} = useAuth();
+        const {user,mini} = useAuth();
         async function handelLogout(){
             try {
                 await signOut(auth);
@@ -17,7 +17,7 @@ const Header = ({title})=>{
         }
     return(
         <>
-            <header className="d-flex align-items-center justify-content-between">
+            <header className={`d-flex align-items-center justify-content-between ${mini && "mini"}`}>
                 <span className='title'>{title}</span>
                 <div className="right">
                     <div className="userSection user d-flex align-items-center gap-3">

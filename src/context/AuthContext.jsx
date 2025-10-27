@@ -18,6 +18,8 @@ export const AuthProvider = ({children})=>{
     const [studentName, setStudentName] = useState(null);
     const [submition, setSubmition] = useState({name:"", q:[]});
     const [grade, setGrade] = useState(0);
+    const [mini, setMini] = useState(false);
+    const [activeTab, setActiveTab] = useState("home");
     const signup = (email , password)=>{
         return createUserWithEmailAndPassword(auth, email, password);
     };
@@ -68,7 +70,11 @@ export const AuthProvider = ({children})=>{
         deleteExamId,
         setDeleteExamId,
         deletePopupView,
-        setDeletePopupview
+        setDeletePopupview,
+        mini,
+        setMini,
+        activeTab,
+        setActiveTab
         }}>
             {!loading && children}
         </AuthContext.Provider>

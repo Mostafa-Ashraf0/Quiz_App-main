@@ -11,6 +11,7 @@
     background-color: #0F1E33;
 }
 
+
 .sidebar .icon{
     height: 70px;
     margin-bottom: 10px;
@@ -35,7 +36,7 @@
     padding: 0;
 }
 
-.sidebar ul li{
+.sidebar ul .tab{
     padding: 5px 10px;
     display: flex;
     gap: 10px;
@@ -46,7 +47,73 @@
     transition: 0.2s;
 }
 
-.sidebar ul li:hover{
+.sidebar ul .tab:hover{
     background-color: rgb(207, 205, 205);
     transition: 0.2s;
+}
+
+.sidebar ul .tab.active{
+    background-color: rgb(59, 59, 59);
+}
+
+.sidebar.mini{
+    width: 70px;
+}
+
+.sidebar.mini .tab{
+    justify-content: center;
+}
+
+
+.sidebar.mini span{
+    display: none;
+}
+
+.sidebar.mini ul .tab{
+    font-size: 25px;
+}
+
+.sidebar.mini ul .tab.active{
+    background-color: #0F1E33;
+    color: red;
+}
+
+
+
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+    .sidebar{
+        width: 70px;
+    }
+    .sidebar .tab{
+    justify-content: center;
+    }
+
+    .sidebar span{
+        display: none;
+    }
+    .sidebar ul .tab{
+    font-size: 25px;
+    }
+    .sidebar ul .tab.active{
+        background-color: #0F1E33;
+        color: red;
+    }
+
+    .logo{
+        display: none;
+    }
+    .sidebar .icon::before {
+        content: url('./miniLogo.png');
+    }
+    .sidebar ul li:last-of-type{
+        display: none;
+    }
+}
+
+
+/* Mobile First */
+@media (max-width: 767px) {
+    
 }

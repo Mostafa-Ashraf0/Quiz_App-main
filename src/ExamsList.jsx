@@ -72,7 +72,7 @@ const ExamsList = ()=>{
                 </Link>
             </div>
             {exams.length>0?exams.map((ex)=>(
-               <div class="card w-100 " key={ex.id} style={{boxShadow:"0 8px 32px rgba(0, 0, 0, 0.3)",background:"rgba(255, 255, 255, 0.1)"}}>
+               <div class="card w-100 " key={ex.id} style={{background:"rgba(255, 255, 255, 0.1)"}}>
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div className="examInfo">
                             <h5 class="card-title p-0 m-0">{ex.title}</h5>
@@ -86,9 +86,9 @@ const ExamsList = ()=>{
                         </div>
                         <span className='date-time'>{ex.createdAt.toDate().toLocaleString()}</span>
                         <div className="buttons d-flex gap-2">
-                            <button className='view btn btn-primary' onClick={()=>handleViewExam(ex.id)}><i class="fa-solid fa-eye"></i>View/Edit</button>
-                            <button className='update btn btn-warning' onClick={()=>handleShare(ex.id)}><i class="fa-solid fa-share-nodes"></i>Share</button>
-                            <button className='delete btn btn-danger' onClick={()=>handleDeleteExam(ex.id)}><i class="fa-solid fa-trash"></i>Delete</button>
+                            <button className='view btn btn-primary border border-1 border-secondary-subtle' onClick={()=>handleViewExam(ex.id)}><i class="fa-solid fa-eye"></i>View/Edit</button>
+                            <button className='update btn btn-warning border border-1 border-secondary-subtle' onClick={()=>handleShare(ex.id)}><i class="fa-solid fa-share-nodes"></i>Share</button>
+                            <button className='delete btn btn-danger border border-1 border-secondary-subtle' onClick={()=>handleDeleteExam(ex.id)}><i class="fa-solid fa-trash"></i>Delete</button>
                         </div>
                     </div>
                 </div>   
