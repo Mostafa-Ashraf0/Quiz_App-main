@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
-import { collection, addDoc,Timestamp, getDocs, deleteDoc,doc} from "firebase/firestore"; 
+import { collection, addDoc,Timestamp, getDocs} from "firebase/firestore"; 
 import {db} from "./firebase";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './assets/examsList.css';
 import LinkPopup from './LinkPopup';
+import DeletePopup from './DeletePopup';
+
 const ExamsList = ()=>{
-    const {setExamId,user,setPopupView} = useAuth();
+    const {setExamId,user,setPopupView,setDeleteExamId,setDeletePopupview} = useAuth();
     const [exams,setExams] = useState([]);
     const [link, setLink] = useState(null);
     const navigate = useNavigate();
@@ -24,25 +26,9 @@ const ExamsList = ()=>{
             alert(err);
         }
     }
-        const handleDeleteExam = async(id)=>{
-            try{
-                //delete examId from user
-                const userExamRef = doc(db, `users/${user.uid}/exams`, id);
-                await deleteDoc(userExamRef);
-
-                //delete all questions
-                const questionsSnap = await getDocs(collection(db, `exam/${id}/questions`));
-                for (const q of questionsSnap.docs) {
-                await deleteDoc(q.ref);
-                }
-                //delete examId from exams
-                const examRef = doc(db, "exam", id);
-                await deleteDoc(examRef);
-                alert("Exam Deleted");
-
-            }catch(err){
-                alert(err);
-            }
+        const handleDeleteExam = (id)=>{
+            setDeleteExamId(id);
+            setDeletePopupview(true);
         }
 
     const handleViewExam = (id)=>{
@@ -76,6 +62,7 @@ const ExamsList = ()=>{
     return(
         <div className='px-4 py-5 d-flex flex-column gap-3'>
             <LinkPopup link={link}/>
+            <DeletePopup/>
             <div className="head d-flex align-items-center justify-content-between gap-5 mb-3">
                 <h3>Exams List</h3>
                 <Link to={"./Exam"} style={{textDecoration:"none"}}>

@@ -6,12 +6,14 @@ const AuthContext = createContext();
 export const AuthProvider = ({children})=>{
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [deleteExamId, setDeleteExamId] = useState(false);
     const [logged, setLogged] = useState(false);
     const [add, setAdd] = useState(false);
     const [question, addQuestion] = useState([]);
     const [examId, setExamId] = useState(null);
     const [updateFormView, setUpdateFormView] = useState(false);
     const [popupView, setPopupView] = useState(false);
+    const [deletePopupView, setDeletePopupview] = useState(false);
     const [currentUpdateData, setCurrentUpdateData] = useState(null);
     const [studentName, setStudentName] = useState(null);
     const [submition, setSubmition] = useState({name:"", q:[]});
@@ -62,7 +64,11 @@ export const AuthProvider = ({children})=>{
         grade,
         setGrade,
         loading,
-        setLoading
+        setLoading,
+        deleteExamId,
+        setDeleteExamId,
+        deletePopupView,
+        setDeletePopupview
         }}>
             {!loading && children}
         </AuthContext.Provider>
