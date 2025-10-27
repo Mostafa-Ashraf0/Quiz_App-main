@@ -44,3 +44,17 @@ header.mini{
     width: calc(100% - 70px);
     left: 70px;
 }
+
+
+@media (min-width: 50px) and (max-width: 991px) {
+    header{
+        width: calc(100% - 70px);
+        left: 70px;
+    }
+}
+
+@media (max-width: 767px){
+    header .userSection{
+        display: none !important; 
+    }
+}

@@ -1,0 +1,28 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.log-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-main{
+    width: 400px;
+}
+
+@media (max-width: 767px){
+    .login-main{
+        width: 350px;
+    }
+
+    .login .title{
+        font-size: 20px;
+    }
+}

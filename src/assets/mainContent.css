@@ -6,3 +6,9 @@
 .main.mini{
     margin-left: 70px;
 }
+
+@media (min-width: 50px) and (max-width: 991px) {
+    .main{
+        margin-left: 70px;
+    }
+}

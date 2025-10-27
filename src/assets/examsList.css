@@ -9,7 +9,19 @@
     color: white;
 }
 
+.card-body{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .examInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.examInfo .small{
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -25,5 +37,37 @@
 
 .date-time{
     font-weight: 500;
-    font-size: 15px;
+    font-size: 14px;
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .view span,
+    .update span,
+    .delete span{
+        display: none;
+    }
+
+}
+
+@media (max-width: 767px){
+    .view span,
+    .update span,
+    .delete span{
+        display: none;
+    }
+    .exam-body{
+        align-items: start;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .examInfo .small ul{
+        font-size: 11px;
+    }
+    .head h3{
+        font-size: 18px;
+    }
+    .create{
+        font-size: 14px;
+    }
 }
