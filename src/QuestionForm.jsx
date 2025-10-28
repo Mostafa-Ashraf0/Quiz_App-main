@@ -4,6 +4,7 @@ import { addDoc, collection, onSnapshot } from "firebase/firestore";
 import { db } from "./firebase";
 import Form from 'react-bootstrap/Form';
 import toast from "react-hot-toast";
+import './assets/questionForm.css';
 
 export default function QuestionForm() {
     const { addQuestion, examId } = useAuth();
@@ -40,6 +41,7 @@ export default function QuestionForm() {
             Answer: answer.current.value,
         };
         await addDoc(collection(db, "exam", examId, "questions"), newQuestion);
+
         toast.success("question added");
         questionText.current.value = "";
         optionA.current.value = "";
@@ -62,61 +64,61 @@ export default function QuestionForm() {
                     />
                 </Form.Group>
 
-                <div className="d-flex gap-3 mb-2">
-                    <Form.Group className="d-flex align-items-center w-50">
+                <div className="bar">
+                    <Form.Group className="group d-flex align-items-center w-50">
                         <Form.Label className="m-0 me-2">A:</Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="First choice"
-                            className="border-0 border-start border-primary border-3 rounded-1 bg-light"
+                            className="inp border-0 border-start border-primary border-3 rounded-1 bg-light"
                             ref={optionA}
                             required
                         />
                     </Form.Group>
 
-                    <Form.Group className="d-flex align-items-center w-50">
+                    <Form.Group className="group d-flex align-items-center w-50">
                         <Form.Label className="m-0 me-2">B:</Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Second choice"
-                            className="border-0 border-start border-primary border-3 rounded-1 bg-light"
+                            className="inp border-0 border-start border-primary border-3 rounded-1 bg-light"
                             ref={optionB}
                             required
                         />
                     </Form.Group>
                 </div>
 
-                <div className="d-flex gap-3 mb-3">
-                    <Form.Group className="d-flex align-items-center w-50">
+                <div className="bar">
+                    <Form.Group className="group d-flex align-items-center w-50">
                         <Form.Label className="m-0 me-2">C:</Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Third choice"
-                            className="border-0 border-start border-primary border-3 rounded-1 bg-light"
+                            className="inp border-0 border-start border-primary border-3 rounded-1 bg-light"
                             ref={optionC}
                             required
                         />
                     </Form.Group>
 
-                    <Form.Group className="d-flex align-items-center w-50">
+                    <Form.Group className="group d-flex align-items-center w-50">
                         <Form.Label className="m-0 me-2">D:</Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Fourth choice"
-                            className="border-0 border-start border-primary border-3 rounded-1 bg-light"
+                            className="inp border-0 border-start border-primary border-3 rounded-1 bg-light"
                             ref={optionD}
                             required
                         />
                     </Form.Group>
                 </div>
 
-                <div className="d-flex gap-3 justify-content-between">
-                    <Form.Group className="d-flex align-items-center w-50">
+                <div className="bar">
+                    <Form.Group className="group d-flex align-items-center w-50">
                     <Form.Label className="m-0 me-2">Answer:</Form.Label>
                     <Form.Control
                             type="text"
                             placeholder="Right Answer"
-                            className="border-0 border-bottom border-success border-3 rounded-0 bg-light"
+                            className="inp border-0 border-bottom border-success border-3 rounded-0 bg-light"
                             ref={answer}
                             required
                         />

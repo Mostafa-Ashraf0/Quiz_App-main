@@ -1,12 +1,15 @@
-import { useAuth } from "./context/AuthContext"
-
+import { useAuth } from "./context/AuthContext";
+import './assets/finalResult.css';
 
 const FinalResult = ()=>{
-    const {grade} = useAuth();
+    const {grade, question} = useAuth();
     return(
-        <>
-            Your Grade is {grade}
-        </>
+        <div className="final">
+            <div className="final-inner">
+                <h4>Submition Saved</h4>
+                <h6>Your Grade is: <span>{grade}/{question.length}</span></h6>
+            </div>
+        </div>
     )
 };
 

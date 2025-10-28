@@ -1,0 +1,24 @@
+.bar{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.bar:last-of-type{
+    justify-content: space-between;
+}
+
+
+@media (max-width: 767px){
+    .bar{
+        flex-direction: column;
+    }
+
+    .bar .group{
+        width: 100% !important;
+    }
+
+    .bar .inp{
+        width: 100% !important;
+    }
+}

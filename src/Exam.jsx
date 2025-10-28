@@ -6,8 +6,7 @@ import { useAuth } from "./context/AuthContext"
 import { collection, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore"; 
 import {db} from "./firebase";
 import Form from 'react-bootstrap/Form';
-import './updateForm.css';
-
+import './assets/exam.css';
 
 export default function Exam(){
     const {question,setExamId,examId,addQuestion,user,updateFormView} = useAuth();
@@ -58,7 +57,7 @@ export default function Exam(){
     }
 
     return(
-        <div className="px-5 py-3">
+        <div className="exam-body">
             {updateFormView && 
             <div className="update-form">
               <QuestionUpdateForm/>

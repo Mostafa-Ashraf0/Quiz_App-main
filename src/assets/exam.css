@@ -11,3 +11,14 @@
     padding: 20px;
     z-index: 1002;
 }
+
+.exam-body{
+    padding: 20px 30px;
+}
+
+
+@media (max-width: 767px){
+    .exam-body{
+        padding: 10px;
+    }
+}

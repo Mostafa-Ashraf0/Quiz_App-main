@@ -7,7 +7,6 @@
     color: black;
     border: solid 1px grey;
     border-radius: 5px;
-    min-width: 600px;
     height: 100px;
     display: flex;
     align-items: center;
@@ -20,7 +19,8 @@
     background-color: #19355c;
     color: white;
     padding: 10px;
-    border-radius: 20px;
+    width: 80%;
+    overflow-x: auto;
 }
 
 .btns{
@@ -33,4 +33,13 @@
     font-size: 20px;
     cursor: pointer;
     color: white;
+}
+
+/* Mobile First */
+@media (max-width: 767px) {
+    .popup{
+        width: 90% !important;
+        padding: 10px !important;
+        gap: 10px !important;
+    }
 }

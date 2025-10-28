@@ -51,63 +51,63 @@ const QuestionUpdateForm = ()=>{
             <Form onSubmit={handleUpdate} className="form-body py-4 px-4">
                 <Form.Group className="mb-4" controlId="formGroupEmail">
                     <Form.Control 
-                    className="border-0 border-bottom border-primary border-3 rounded-0 bg-light"
+                    className="bar border-0 border-bottom border-primary border-3 rounded-0 bg-light"
                      onChange={handleQTextChange}
                       type="text"
                        name='questionText'
                         value={currentQData.questionText}
                          required/>
                 </Form.Group>
-                <Form.Group className="mb-1 d-flex align-items-center w-50">
+                <Form.Group className="group mb-1 d-flex align-items-center w-50">
                     <Form.Label className="m-0 me-2">A:</Form.Label>
                     <Form.Control
                      type="text"
                       placeholder="First choise"
-                       className="border-0 border-start border-primary border-3 rounded-1 bg-light"
+                       className="bar border-0 border-start border-primary border-3 rounded-1 bg-light"
                         onChange={handleAChange}
                          name='A'
                           value={currentQData.A}
                            required/>
                 </Form.Group>
-                <Form.Group className="mb-1 d-flex align-items-center w-50">
+                <Form.Group className="group mb-1 d-flex align-items-center w-50">
                     <Form.Label className="m-0 me-2">B:</Form.Label>
                     <Form.Control
                      type="text"
                       placeholder="Secound choise"
-                       className="border-0 border-start border-primary border-3 rounded-1 bg-light"
+                       className="bar border-0 border-start border-primary border-3 rounded-1 bg-light"
                         onChange={handleBChange}
                          name='B'
                           value={currentQData.B}
                            required/>
                 </Form.Group >
-                <Form.Group className="mb-1 d-flex align-items-center w-50">
+                <Form.Group className="group mb-1 d-flex align-items-center w-50">
                     <Form.Label className="m-0 me-2">C:</Form.Label>
                     <Form.Control
                      type="text"
                       placeholder="Third choise"
-                       className="border-0 border-start border-primary border-3 rounded-1 bg-light"
+                       className="bar border-0 border-start border-primary border-3 rounded-1 bg-light"
                         onChange={handleCChange}
                          name='C'
                           value={currentQData.C}
                            required/>
                 </Form.Group>
-                <Form.Group className="mb-3 d-flex align-items-center w-50">
+                <Form.Group className="group mb-3 d-flex align-items-center w-50">
                     <Form.Label className="m-0 me-2">D:</Form.Label>
                     <Form.Control
                      type="text"
                       placeholder="Fourth choise"
-                       className="border-0 border-start border-primary border-3 rounded-1 bg-light"
+                       className="bar border-0 border-start border-primary border-3 rounded-1 bg-light"
                         onChange={handleDChange}
                          name='D'
                           value={currentQData.D}
                            required/>
                 </Form.Group>
-                <Form.Group className="mb-3 d-flex align-items-center w-50">
+                <Form.Group className="group mb-3 d-flex align-items-center w-50">
                     <Form.Label className="m-0 me-2">Answer:</Form.Label>
                     <Form.Control
                      type="text"
                       placeholder="Right Answer"
-                       className="border-0 border-bottom border-success border-3 rounded-0 bg-light"
+                       className="bar border-0 border-bottom border-success border-3 rounded-0 bg-light"
                         onChange={handleAnswer}
                          name='Answer'
                           value={currentQData.Answer}

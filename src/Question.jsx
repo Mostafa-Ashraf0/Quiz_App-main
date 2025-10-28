@@ -2,6 +2,7 @@ import { useAuth } from "./context/AuthContext"
 import { db } from './firebase';
 import { doc, deleteDoc } from 'firebase/firestore';
 import toast from "react-hot-toast";
+import './assets/question.css';
 
 function Question({data,index}) {
     const {setUpdateFormView,setCurrentUpdateData,examId} = useAuth();
@@ -24,7 +25,7 @@ function Question({data,index}) {
                 <h5 style={{margin:"0"}}>{`${index +1})`}</h5>
                 <p style={{margin:"0"}}>{data.questionText}</p>
             </div>
-            <div className="d-flex align-items-center justify-content-between w-100">
+            <div className="cho-btn d-flex align-items-center justify-content-between w-100">
                 <select className="w-25 rounded-1 p-1" name="choose" id="choose" style={{color:"#0F1E33",fontSize:"15px",height:"35px",fontWeight:"500"}}>
                     <option value={data.A}>{data.A}</option>
                     <option value={data.B}>{data.B}</option>

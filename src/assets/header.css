@@ -57,4 +57,10 @@ header.mini{
     header .userSection{
         display: none !important; 
     }
+    header .title{
+        font-size: 20px;
+    }
+    header button{
+        font-size: 15px;
+    }
 }

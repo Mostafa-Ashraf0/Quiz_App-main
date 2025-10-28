@@ -1,0 +1,28 @@
+@media (max-width: 767px){
+    .question-body{
+        padding: 10px !important;
+    }
+    .title h5{
+        font-size: 15px ;
+    }
+    .title p{
+        font-size: 15px;
+    }
+    .question-body .cho-btn{
+        flex-direction: column;
+    }
+    .question-body .cho-btn .answer{
+        font-size: 13px;
+        padding: 5px !important;
+        text-align: center;
+    }
+    .question-body .cho-btn button{
+        font-size: 13px;
+    }
+    .question-body .cho-btn select{
+        width: 100% !important;
+        height: 30px !important;
+        font-size: 12px !important;
+        margin-bottom: 5px !important;
+    }
+}

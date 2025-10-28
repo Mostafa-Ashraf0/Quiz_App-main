@@ -53,7 +53,7 @@ const ExamsList = ()=>{
                     id: doc.id,
                     ...doc.data()
                 }));
-                setExams(examsData);      
+                setExams(examsData);   
             } catch (err) {
             alert(err.message);
             }
@@ -62,7 +62,7 @@ const ExamsList = ()=>{
         fetchExams();
         }, [user,exams]);
     return(
-        <div className='px-4 py-5 d-flex flex-column gap-3'>
+        <div className='exam-list px-4 py-5 d-flex flex-column gap-3'>
             <LinkPopup link={link}/>
             <DeletePopup/>
             <div className="head d-flex align-items-center justify-content-between gap-5 mb-3">

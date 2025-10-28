@@ -9,3 +9,22 @@
     display: flex;
     gap: 10px;
 }
+
+
+@media (max-width: 767px){
+    .form-body{
+        padding: 20px !important;
+        width: 100% !important;
+    }
+    .form-body .group{
+        width: 100% !important;
+        margin-bottom: 5px !important;
+    }
+    .form-body .bar{
+        width: 100% !important;
+        margin: 0;
+    }
+    .controls{
+        margin-top: 20px !important;
+    }
+}

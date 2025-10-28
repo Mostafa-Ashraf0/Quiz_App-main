@@ -1,4 +1,5 @@
 import { useAuth } from "./context/AuthContext";
+import './assets/questionSubmit.css';
 
 function QuestionSubmit({data,index,id}) {
     const { setSubmition } = useAuth();
