@@ -5,6 +5,7 @@ import { useAuth } from './context/AuthContext';
 import { collection, addDoc,Timestamp} from "firebase/firestore"; 
 import {db} from "./firebase";
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Sidebar = ()=>{
     const navigate = useNavigate();
@@ -20,6 +21,7 @@ const Sidebar = ()=>{
             localStorage.setItem("examId",examRef.id);
             setExamId(examRef.id);
             navigate("./Exam");
+            toast.success("exam Created");
         }catch(err){
             alert(err);
         }

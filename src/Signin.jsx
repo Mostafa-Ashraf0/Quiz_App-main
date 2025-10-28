@@ -5,6 +5,7 @@ import { useAuth } from './context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './assets/login.css';
+import toast from 'react-hot-toast';
 
 function Signin() {
     const {signin} = useAuth();
@@ -20,6 +21,7 @@ function Signin() {
             setLoading(true);
             await signin(emailRef.current.value, passwordRef.current.value);
             navigate('/home');
+            toast.success("logged in successfuly")
         }catch(err){
             console.error(err);
             setError(err.message);

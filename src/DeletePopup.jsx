@@ -2,6 +2,7 @@ import { useAuth } from './context/AuthContext';
 import './assets/deletePopup.css';
 import { collection,Timestamp, getDocs, deleteDoc,doc} from "firebase/firestore"; 
 import {db} from "./firebase";
+import toast from 'react-hot-toast';
 
 const DeletePopup = ()=>{
     const {deletePopupView,setDeletePopupview,user,deleteExamId} = useAuth();
@@ -22,9 +23,9 @@ const DeletePopup = ()=>{
             // delete examId from exams
             const examRef = doc(db, "exam", deleteExamId);
             await deleteDoc(examRef);
-            alert("exam deleted")
+            toast.success("exam deleted");
         } catch (err) {
-            alert(err.message);
+            toast.error(err);
         }
         };
 

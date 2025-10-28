@@ -1,6 +1,7 @@
 import { useAuth } from "./context/AuthContext"
 import { db } from './firebase';
 import { doc, deleteDoc } from 'firebase/firestore';
+import toast from "react-hot-toast";
 
 function Question({data,index}) {
     const {setUpdateFormView,setCurrentUpdateData,examId} = useAuth();
@@ -12,9 +13,9 @@ function Question({data,index}) {
         try{
             const qRef = doc(db, "exam", examId, "questions", data.id);
             await deleteDoc(qRef);
-            alert("question Deleted");
+            toast.success("question deleted");
         }catch(err){
-            alert(err);
+            toast.error(err);
         }
     }
     return (

@@ -9,21 +9,39 @@ import Exam from './Exam';
 import ExamSubmit from './ExamSubmit';
 import FinalResult from './FinalResult';
 import CreateExam from './CreateExam';
+import PrivateRoute from './PrivateRoutes';
+import { Toaster } from 'react-hot-toast';
+
 function App() {
 
   return (
-      <Router>
-        <Routes>
-          <Route path='/finalResult' element={<FinalResult/>}></Route>
-          <Route path='/home' element={<Home/>}></Route>
-          <Route path='/home/Exam' element={<CreateExam/>}></Route>
-          <Route path='/exam/:examId' element={<ExamSubmit/>}></Route>
-          <Route path='/Signup' element={<Signup/>}></Route>
-          <Route path='/' element={<Signin/>}></Route>
-          <Route path='/ForgotPassword' element={<ForgotPassword/>}></Route>
-          <Route path='/exam/:examId/form' element={<SubmitForm/>}></Route>
-        </Routes>
-      </Router>
+      <>
+        <Toaster position="top-center" reverseOrder={false} />
+        <Router>
+          <Routes>
+            <Route path='/finalResult' element={<FinalResult/>}/>
+            <Route 
+            path='/home' 
+            element={
+              <PrivateRoute>
+                <Home/>
+              </PrivateRoute>
+            }/>
+            <Route 
+            path='/home/Exam' 
+            element={
+              <PrivateRoute>
+                <CreateExam/>
+              </PrivateRoute>
+            }/>
+            <Route path='/exam/:examId' element={<ExamSubmit/>}/>
+            <Route path='/Signup' element={<Signup/>}></Route>
+            <Route path='/' element={<Signin/>}></Route>
+            <Route path='/ForgotPassword' element={<ForgotPassword/>}/>
+            <Route path='/exam/:examId/form' element={<SubmitForm/>}/>
+          </Routes>
+        </Router>
+      </>
   )
 }
 

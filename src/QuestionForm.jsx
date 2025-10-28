@@ -3,6 +3,7 @@ import { useAuth } from "./context/AuthContext";
 import { addDoc, collection, onSnapshot } from "firebase/firestore"; 
 import { db } from "./firebase";
 import Form from 'react-bootstrap/Form';
+import toast from "react-hot-toast";
 
 export default function QuestionForm() {
     const { addQuestion, examId } = useAuth();
@@ -39,7 +40,7 @@ export default function QuestionForm() {
             Answer: answer.current.value,
         };
         await addDoc(collection(db, "exam", examId, "questions"), newQuestion);
-
+        toast.success("question added");
         questionText.current.value = "";
         optionA.current.value = "";
         optionB.current.value = "";

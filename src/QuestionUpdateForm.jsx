@@ -4,6 +4,8 @@ import { useAuth } from "./context/AuthContext";
 import { useState } from 'react';
 import { db } from './firebase';
 import { updateDoc, doc } from 'firebase/firestore';
+import toast from 'react-hot-toast';
+
 const QuestionUpdateForm = ()=>{
     const {setUpdateFormView,currentUpdateData,examId} = useAuth();
     const [currentQData, setCurrentQData] = useState(currentUpdateData);
@@ -15,10 +17,10 @@ const QuestionUpdateForm = ()=>{
         try{
             const qRef = doc(db, "exam", examId, "questions", currentUpdateData.id);
             await updateDoc(qRef,currentQData);
-            alert("question updated");
+            toast.success("question updated");
             setUpdateFormView(false);
         }catch(err){
-            alert(err);
+            toast.error(err);
         }
     }
     const handleQTextChange = (e)=>{

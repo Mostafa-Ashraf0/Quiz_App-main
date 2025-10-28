@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import './assets/examsList.css';
 import LinkPopup from './LinkPopup';
 import DeletePopup from './DeletePopup';
+import toast from 'react-hot-toast';
 
 const ExamsList = ()=>{
     const {setExamId,user,setPopupView,setDeleteExamId,setDeletePopupview} = useAuth();
@@ -22,6 +23,7 @@ const ExamsList = ()=>{
             const examRef = await addDoc(collection(db,`users/${user.uid}/exams`),exam);
             localStorage.setItem("examId",examRef.id);
             setExamId(examRef.id);
+            toast.success("exam created");
         }catch(err){
             alert(err);
         }

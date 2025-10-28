@@ -3,16 +3,17 @@ import {auth} from './firebase';
 import { useAuth } from './context/AuthContext';
 import { Link } from 'react-router-dom';
 import './assets/header.css';
+import toast from 'react-hot-toast';
 
 const Header = ({title})=>{
         const {user,mini} = useAuth();
         async function handelLogout(){
             try {
                 await signOut(auth);
-                alert("signed out successfuly")
+                toast.success('Logged out successfully!');
             }catch (err){
                 console.log(err);
-                alert(err);
+                toast.error(err);
             }
         }
     return(
