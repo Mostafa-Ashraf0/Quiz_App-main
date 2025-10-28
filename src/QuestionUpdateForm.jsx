@@ -29,23 +29,23 @@ const QuestionUpdateForm = ()=>{
     };
     const handleAChange = (e)=>{
         const { name, value } = e.target;
-        setCurrentQData(prev => ({ ...prev, [name]: value }));
+        setCurrentQData(prev => ({ ...prev, [name]: value.trim() }));
     };
     const handleBChange = (e)=>{
         const { name, value } = e.target;
-        setCurrentQData(prev => ({ ...prev, [name]: value }));
+        setCurrentQData(prev => ({ ...prev, [name]: value.trim() }));
     }; 
     const handleCChange = (e)=>{
         const { name, value } = e.target;
-        setCurrentQData(prev => ({ ...prev, [name]: value }));
+        setCurrentQData(prev => ({ ...prev, [name]: value.trim() }));
     };
     const handleDChange = (e)=>{
         const { name, value } = e.target;
-        setCurrentQData(prev => ({ ...prev, [name]: value }));
+        setCurrentQData(prev => ({ ...prev, [name]: value.trim() }));
     };
     const handleAnswer = (e)=>{
         const { name, value } = e.target;
-        setCurrentQData(prev => ({ ...prev, [name]: value }));
+        setCurrentQData(prev => ({ ...prev, [name]: value.trim() }));
     }; 
     return(
             <Form onSubmit={handleUpdate} className="form-body py-4 px-4">

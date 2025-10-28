@@ -34,11 +34,11 @@ export default function QuestionForm() {
         e.preventDefault();
         const newQuestion = {
             questionText: questionText.current.value,
-            A: optionA.current.value,
-            B: optionB.current.value,
-            C: optionC.current.value,
-            D: optionD.current.value,
-            Answer: answer.current.value,
+            A: optionA.current.value.trim(),
+            B: optionB.current.value.trim(),
+            C: optionC.current.value.trim(),
+            D: optionD.current.value.trim(),
+            Answer: answer.current.value.trim(),
         };
         await addDoc(collection(db, "exam", examId, "questions"), newQuestion);
 
