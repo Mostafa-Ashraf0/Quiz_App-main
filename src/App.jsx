@@ -6,6 +6,7 @@ import ForgotPassword from './ForgotPassword';
 import SubmitForm from './SubmitForm';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Exam from './Exam';
+import Results from './Results';
 import ExamSubmit from './ExamSubmit';
 import FinalResult from './FinalResult';
 import CreateExam from './CreateExam';
@@ -32,6 +33,13 @@ function App() {
             element={
               <PrivateRoute>
                 <CreateExam/>
+              </PrivateRoute>
+            }/>
+            <Route 
+            path='/home/results' 
+            element={
+              <PrivateRoute>
+                <Results/>
               </PrivateRoute>
             }/>
             <Route path='/exam/:examId' element={<ExamSubmit/>}/>

@@ -1,5 +1,6 @@
 import { useAuth } from './context/AuthContext';
 import './assets/linkPopup.css';
+import toast from 'react-hot-toast';
 
 const LinkPopup = ({link})=>{
     const {popupView,setPopupView} = useAuth();
@@ -8,7 +9,7 @@ const LinkPopup = ({link})=>{
     }
     const handleCopy = ()=>{
         navigator.clipboard.writeText(link);
-        alert("link copied");
+        toast.success("link copied");
     }
     return(
         <div className='popup' style={popupView?
@@ -16,7 +17,7 @@ const LinkPopup = ({link})=>{
         {display:"none"}}>
             <div className='link'>{link}</div>
             <div className="btns">
-                <i onClick={handleCopy} class="fa-solid fa-copy"></i>
+                <i onClick={handleCopy} className="fa-solid fa-copy"></i>
                 <button className='btn btn-danger' onClick={handleClose}>Close</button>
             </div>
         </div>

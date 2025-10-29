@@ -6,8 +6,19 @@ const FinalResult = ()=>{
     return(
         <div className="final">
             <div className="final-inner">
-                <h4>Submition Saved</h4>
-                <h6>Your Grade is: <span>{grade}/{question.length}</span></h6>
+                <h4 style={{marginBottom:"20px"}}>Your Results</h4>
+                <div className="circle">
+                    <span className="main">{grade}</span>
+                    <span className="total">of {question.length}</span>
+                </div>
+                <div className="para">
+                    <span className="para-title">{grade/question.length >= 0.5?"Great":"Dont give up"}</span>
+                    <p>
+                        {grade/question.length >= 0.5?
+                        "You passed this quiz successfuly":
+                        "You failed this time please try again later"}
+                    </p>
+                </div>
             </div>
         </div>
     )

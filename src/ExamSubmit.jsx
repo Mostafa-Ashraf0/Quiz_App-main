@@ -30,7 +30,7 @@ const ExamSubmit = ()=>{
         }, [examId]);
 
         // correction logic
-        const handleSubmit = (e)=>{
+        const handleSubmit = async(e)=>{
           e.preventDefault();
           // check if all questions answered
           if(question.length !== submition.q.length){
@@ -46,9 +46,10 @@ const ExamSubmit = ()=>{
             }
         });
         setGrade(finalGrade);
+        const newSubmition = {...submition,grade:finalGrade}
         const submitRef = collection(db, `exam/${examId}/submitions`);
-        addDoc(submitRef, submition);
-        console.log(submition);
+        await addDoc(submitRef, newSubmition);
+        console.log(newSubmition);
         setSubmition({name:"", q:[]});
         navigate("/finalResult");
         }

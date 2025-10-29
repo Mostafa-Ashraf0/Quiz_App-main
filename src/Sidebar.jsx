@@ -50,11 +50,11 @@ const Sidebar = ()=>{
             </div>
             <div className="master">
                 <ul>
-                    <li onClick={handleDashboard} className={activeTab==="home"?"tab active":"tab"}><i class="fa-solid fa-grip"></i><span>Dashboard</span></li>
-                    <li onClick={handleCreateExam} className={activeTab==="exam"?"tab active": "tab"}><i class="fa-solid fa-square-plus"></i><span>Create New Exam</span></li>
-                    <li onClick={handleAnalytics} className={activeTab==="analytics"?"tab active": "tab"}><i class="fa-solid fa-chart-simple"></i><span>Analytics</span></li>
-                    <li onClick={handleSettings} className={activeTab==="settings"?"tab active": "tab"}><i class="fa-solid fa-gears"></i><span>Settings</span></li>
-                    <li onClick={handleSize} className="tab"><i class="fa-solid fa-expand"></i><span>Expand</span></li>
+                    <li onClick={handleDashboard} className={activeTab==="home"?"tab active":"tab"}><i className="fa-solid fa-grip"></i><span>Dashboard</span></li>
+                    <li onClick={handleCreateExam} className={activeTab==="exam"?"tab active": "tab"}><i className="fa-solid fa-square-plus"></i><span>Create New Exam</span></li>
+                    <li onClick={handleAnalytics} className={activeTab==="analytics"?"tab active": "tab"}><i className="fa-solid fa-chart-simple"></i><span>Analytics</span></li>
+                    <li onClick={handleSettings} className={activeTab==="settings"?"tab active": "tab"}><i className="fa-solid fa-gears"></i><span>Settings</span></li>
+                    <li onClick={handleSize} className="tab"><i className="fa-solid fa-expand"></i><span>Expand</span></li>
                 </ul>
             </div>
         </div>

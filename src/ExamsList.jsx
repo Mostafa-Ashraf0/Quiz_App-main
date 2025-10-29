@@ -38,6 +38,13 @@ const ExamsList = ()=>{
             localStorage.setItem("examId",id);
             navigate("./Exam");
     }
+
+    const handleResults = (id)=>{
+            //setExamId(id);
+            localStorage.setItem("examId",id);
+            navigate("./results");
+    }
+
     const handleShare = (id)=>{
         const link = `${window.location.origin}/exam/${id}/form`;
         setLink(link);
@@ -69,15 +76,15 @@ const ExamsList = ()=>{
                 <h3>Exams List</h3>
                 <Link to={"./Exam"} style={{textDecoration:"none"}}>
                     <button onClick={handleCreateExam} className='create btn btn-primary'>
-                        <i class="fa-solid fa-plus"></i>New Exam
+                        <i className="fa-solid fa-plus"></i>New Exam
                     </button>
                 </Link>
             </div>
             {exams.length>0?exams.map((ex)=>(
-               <div class="card w-100 " key={ex.id} style={{background:"rgba(255, 255, 255, 0.1)"}}>
-                    <div class="card-body exam-body">
+               <div className="card w-100 " key={ex.id} style={{background:"rgba(255, 255, 255, 0.1)"}}>
+                    <div className="card-body exam-body">
                         <div className="examInfo">
-                            <h5 class="card-title p-0 m-0">{ex.title}</h5>
+                            <h5 className="card-title p-0 m-0">{ex.title}</h5>
                             <div className="small">
                                 <ul>
                                     <li>Exam Id: {ex.id} </li>
@@ -89,9 +96,10 @@ const ExamsList = ()=>{
                         </div>
                         
                         <div className="buttons d-flex gap-2">
-                            <button className='view btn btn-primary border border-1 border-secondary-subtle' onClick={()=>handleViewExam(ex.id)}><i class="fa-solid fa-eye"></i><span>View/Edit</span></button>
-                            <button className='update btn btn-warning border border-1 border-secondary-subtle' onClick={()=>handleShare(ex.id)}><i class="fa-solid fa-share-nodes"></i><span>Share</span></button>
-                            <button className='delete btn btn-danger border border-1 border-secondary-subtle' onClick={()=>handleDeleteExam(ex.id)}><i class="fa-solid fa-trash"></i><span>Delete</span></button>
+                            <button className='view btn btn-primary border border-1 border-secondary-subtle' onClick={()=>handleViewExam(ex.id)}><i className="fa-solid fa-eye"></i><span>View/Edit</span></button>
+                            <button className='view btn btn-primary border border-1 border-secondary-subtle' onClick={()=>handleResults(ex.id)}><i className="fa-solid fa-eye"></i><span>Results</span></button>
+                            <button className='update btn btn-warning border border-1 border-secondary-subtle' onClick={()=>handleShare(ex.id)}><i className="fa-solid fa-share-nodes"></i><span>Share</span></button>
+                            <button className='delete btn btn-danger border border-1 border-secondary-subtle' onClick={()=>handleDeleteExam(ex.id)}><i className="fa-solid fa-trash"></i><span>Delete</span></button>
                         </div>
                     </div>
                 </div>   

@@ -30,12 +30,12 @@ const Header = ({title})=>{
                     )
                     }
                     <div className="icon">
-                        <i class="fa-regular fa-user"></i>
+                        <i className="fa-regular fa-user"></i>
                     </div>
                     </div>
                     {user?(
                         <Link style={{textDecoration:"none"}} to="/">
-                        <button type="button"onClick={handelLogout}><i class="fa-solid fa-right-from-bracket"></i>Log out</button>
+                        <button type="button"onClick={handelLogout}><i className="fa-solid fa-right-from-bracket"></i>Log out</button>
                         </Link>
                         ):
                         (
