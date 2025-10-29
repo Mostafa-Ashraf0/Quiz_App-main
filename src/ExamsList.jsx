@@ -97,7 +97,7 @@ const ExamsList = ()=>{
                         
                         <div className="buttons d-flex gap-2">
                             <button className='view btn btn-primary border border-1 border-secondary-subtle' onClick={()=>handleViewExam(ex.id)}><i className="fa-solid fa-eye"></i><span>View/Edit</span></button>
-                            <button className='view btn btn-primary border border-1 border-secondary-subtle' onClick={()=>handleResults(ex.id)}><i className="fa-solid fa-eye"></i><span>Results</span></button>
+                            <button className='view btn btn-primary border border-1 border-secondary-subtle' onClick={()=>handleResults(ex.id)}><i className="fa-solid fa-square-poll-horizontal"></i><span>Results</span></button>
                             <button className='update btn btn-warning border border-1 border-secondary-subtle' onClick={()=>handleShare(ex.id)}><i className="fa-solid fa-share-nodes"></i><span>Share</span></button>
                             <button className='delete btn btn-danger border border-1 border-secondary-subtle' onClick={()=>handleDeleteExam(ex.id)}><i className="fa-solid fa-trash"></i><span>Delete</span></button>
                         </div>
