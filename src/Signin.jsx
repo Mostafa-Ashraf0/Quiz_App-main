@@ -23,7 +23,7 @@ function Signin() {
             navigate('/home');
             toast.success("logged in successfuly")
         }catch(err){
-            console.error(err);
+            //console.error(err);
             setError(err.message);
         }
         setLoading(false);
@@ -45,7 +45,7 @@ function Signin() {
                     <Form.Control type="password" ref={passwordRef}/>
                 </Form.Group>
                 <Button variant="primary" size="sm" className='w-100' type='submit' disabled={loading}>
-                    Sign In
+                    {loading?"loading...":"Login"}
                 </Button>
             </Form>
             <div className='w-100 text-center mt-4'>

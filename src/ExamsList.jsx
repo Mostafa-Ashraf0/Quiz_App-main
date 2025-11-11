@@ -10,8 +10,7 @@ import DeletePopup from './DeletePopup';
 import toast from 'react-hot-toast';
 
 const ExamsList = ()=>{
-    const {setExamId,user,setPopupView,setDeleteExamId,setDeletePopupview} = useAuth();
-    const [exams,setExams] = useState([]);
+    const {setExamId,user,setPopupView,setDeleteExamId,setDeletePopupview,exams,setExams} = useAuth();
     const [link, setLink] = useState(null);
     const navigate = useNavigate();
     const handleCreateExam = async()=>{
@@ -67,7 +66,7 @@ const ExamsList = ()=>{
         };
 
         fetchExams();
-        }, [user,exams]);
+        }, [user]);
     return(
         <div className='exam-list px-4 py-5 d-flex flex-column gap-3'>
             <LinkPopup link={link}/>
@@ -88,8 +87,8 @@ const ExamsList = ()=>{
                             <div className="small">
                                 <ul>
                                     <li>Exam Id: {ex.id} </li>
-                                    <li>|</li>
-                                    <li>10 Questions</li>
+                                    {/*<li>|</li>
+                                    <li>10 Questions</li>*/}
                                 </ul>
                                 <span className='date-time'>{ex.createdAt.toDate().toLocaleString()}</span>
                             </div>

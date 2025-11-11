@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form';
 import QuestionSubmit from "./QuestionSubmit";
 import { useParams, useNavigate } from "react-router-dom";
 import FinalResult from "./FinalResult";
-
+import toast from "react-hot-toast";
 
 const ExamSubmit = ()=>{
         const {question,addQuestion,submition,setSubmition,setGrade,loading,setLoading} = useAuth();
@@ -34,7 +34,7 @@ const ExamSubmit = ()=>{
           e.preventDefault();
           // check if all questions answered
           if(question.length !== submition.q.length){
-            alert("please answer all questions");
+            toast.error("Please Answer All Questions");
             console.log(submition);
             return;
           }

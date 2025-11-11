@@ -1,14 +1,13 @@
 import {Card,Form,Button,Alert} from 'react-bootstrap';
 import { useNavigate,useParams } from 'react-router-dom';
 import { useAuth } from "./context/AuthContext";
-import { useEffect, useState } from 'react';
-import { doc, getDoc } from "firebase/firestore"; 
-import {db} from "./firebase";
+import { useState } from 'react';
+
 
 const SubmitForm = ()=>{
     const [sName, setSName] = useState(null);
-    const [title, setTitle] = useState(null);
-    const { setSubmition,user } = useAuth();
+    //const [title, setTitle] = useState(null);
+    const { setSubmition } = useAuth();
     const navigate = useNavigate();
     const { examId } = useParams();
     const handleSubmit = (e)=>{
@@ -19,29 +18,29 @@ const SubmitForm = ()=>{
     const handleChange = (e)=>{
         setSName(e.target.value);
     }
-useEffect(() => {
-    const fetchTitle = async () => {
-      try {
-        if (!user || !examId) return; 
-        const docRef = doc(db, `users/${user.uid}/exams`, examId);
-        const snapshot = await getDoc(docRef);
-        const data = snapshot.data();
-        setTitle(data.title); 
+    /*useEffect(() => {
+        const fetchTitle = async () => {
+        try {
+            if (!examId) return; 
+            const docRef = doc(db, `users/${user.uid}/exams`, examId);
+            const snapshot = await getDoc(docRef);
+            const data = snapshot.data();
+            setTitle(data.title); 
 
-      } catch (err) {
-        alert(err.message);
-      }
-    };
+        } catch (err) {
+            alert(err.message);
+        }
+        };
 
-    fetchTitle();
-  }, [examId, user]);
+        fetchTitle();
+    }, [examId, user]);*/
 
     return(
         <div className='d-flex align-items-center justify-content-center h-100 px-2'>
         <Card style={{width:"500px"}}>
             <Card.Body className='d-flex flex-column gap-3'>
                 <div className="info d-flex flex-column gap-2">
-                    <h4 className='p-0 m-0'>{title?title:"..loading exam"}</h4>
+                    <h6 className='p-0 m-0'>Enter Your Full Name and submit to start the Exam</h6>
                 </div>
                 <Form onSubmit={handleSubmit} className='d-flex flex-column gap-3 w-100'>
                     <Form.Group>

@@ -19,6 +19,7 @@ export const AuthProvider = ({children})=>{
     const [submition, setSubmition] = useState({name:"", q:[]});
     const [grade, setGrade] = useState(0);
     const [mini, setMini] = useState(false);
+    const [exams,setExams] = useState([]);
     const [activeTab, setActiveTab] = useState("home");
     const signup = (email , password)=>{
         return createUserWithEmailAndPassword(auth, email, password);
@@ -74,7 +75,9 @@ export const AuthProvider = ({children})=>{
         mini,
         setMini,
         activeTab,
-        setActiveTab
+        setActiveTab,
+        exams,
+        setExams
         }}>
             {!loading && children}
         </AuthContext.Provider>

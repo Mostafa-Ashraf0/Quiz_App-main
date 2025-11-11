@@ -26,18 +26,18 @@ function Question({data,index}) {
                 <p style={{margin:"0"}}>{data.questionText}</p>
             </div>
             <div className="cho-btn d-flex align-items-center justify-content-between w-100">
-                <select className="w-25 rounded-1 p-1" name="choose" id="choose" style={{color:"#0F1E33",fontSize:"15px",height:"35px",fontWeight:"500"}}>
-                    <option value={data.A}>{data.A}</option>
-                    <option value={data.B}>{data.B}</option>
-                    <option value={data.C}>{data.C}</option>
-                    <option value={data.D}>{data.D}</option>
-                </select>
+                <ul>
+                    <li>{data.A}</li>
+                    <li>{data.B}</li>
+                    <li>{data.C}</li>
+                    <li>{data.D}</li>
+                </ul>
                 <div className="d-flex align-items-center justify-content-between gap-3">
                     <div className="answer bg-success py-2 px-4 d-flex align-items-center rounded-2" style={{color:"white"}}>
                         <span className="m-0 p-0">Answer: {data.Answer}</span>
                     </div>
                     <button onClick={()=>handleUpdate(data)} className="btn btn-warning">Update</button>
-                    <button onClick={()=>handleDelete(data)} className="btn btn-primary">Delete</button>
+                    <button onClick={()=>handleDelete(data)} className="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>

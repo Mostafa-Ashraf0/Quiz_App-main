@@ -10,7 +10,7 @@ import './assets/exam.css';
 
 export default function Exam(){
     const {question,setExamId,examId,addQuestion,user,updateFormView} = useAuth();
-    const [title, setTitle] = useState("Untitled Exam");
+    const [title, setTitle] = useState("");
     useEffect(()=>{
         setExamId(localStorage.getItem("examId"));
     },[])
@@ -37,7 +37,7 @@ export default function Exam(){
         const data = examSnap.data();
         setTitle(data.title)
       }catch(err){
-        alert(err)
+        console.log(err);
       }
       }
       if (user?.uid && examId){
@@ -62,7 +62,7 @@ export default function Exam(){
             <div className="update-form">
               <QuestionUpdateForm/>
               </div>}
-            <input type="text" className="w-100 mb-3 py-2 px-4 border-0 border-bottom bg-white border-5 rounded-0" placeholder="Exam Title" value={title} onChange={handleChange}/>
+            <input type="text" className="w-100 mb-3 py-2 px-4 border-0 border-bottom bg-white border-5 rounded-0" placeholder="Add Title" value={title} onChange={handleChange}/>
             <QuestionForm/>
             {question && question.map((q, index) => {
             return <Question key={index} index={index} data={q} />
