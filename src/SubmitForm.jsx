@@ -40,14 +40,14 @@ const SubmitForm = ()=>{
         <Card style={{width:"500px"}}>
             <Card.Body className='d-flex flex-column gap-3'>
                 <div className="info d-flex flex-column gap-2">
-                    <h6 className='p-0 m-0'>Enter Your Full Name and submit to start the Exam</h6>
+                    <h6 className='p-0 m-0'>من فضلك أدخل الأسم بالكامل</h6>
                 </div>
                 <Form onSubmit={handleSubmit} className='d-flex flex-column gap-3 w-100'>
                     <Form.Group>
-                        <Form.Label>Full Name</Form.Label>
-                        <Form.Control type='text' onChange={handleChange} required/>
+                        <Form.Label>ألاسم</Form.Label>
+                        <Form.Control type='text' onChange={handleChange} required minLength={8}/>
                     </Form.Group>
-                    <Button type='submit'>Start Exam</Button>
+                    <Button type='submit'>ابدأ الأختبار</Button>
                 </Form>
             </Card.Body>
         </Card>
