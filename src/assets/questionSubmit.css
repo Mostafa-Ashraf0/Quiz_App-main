@@ -1,3 +1,10 @@
 .question-body .title h4{
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bolder;
+    color: rgb(28, 28, 243);
 }
+
+.question-body .block{
+    font-size: 18px;
+}
+

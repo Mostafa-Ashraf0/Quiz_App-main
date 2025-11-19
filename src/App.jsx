@@ -9,6 +9,7 @@ import Exam from './Exam';
 import Results from './Results';
 import ExamSubmit from './ExamSubmit';
 import FinalResult from './FinalResult';
+import SubmittedBefore from './SubmittedBefore';
 import CreateExam from './CreateExam';
 import PrivateRoute from './PrivateRoutes';
 import { Toaster } from 'react-hot-toast';
@@ -21,6 +22,7 @@ function App() {
         <Router>
           <Routes>
             <Route path='/finalResult' element={<FinalResult/>}/>
+            <Route path='/submittedBefore' element={<SubmittedBefore/>}/>
             <Route 
             path='/home' 
             element={

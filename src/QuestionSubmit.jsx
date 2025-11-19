@@ -25,7 +25,7 @@ function QuestionSubmit({data,index,id}) {
                 <h4>{index +1}-</h4>
                 <h4>{data.questionText}</h4>
             </div>
-            <div className="d-flex flex-column align-items-start justify-content-between w-100">
+            <div className="d-flex flex-column gap-3 align-items-start justify-content-between w-100">
                 <div className="block d-flex align-items-center gap-2">
                     <input type="radio" name={`answer${index}`} value={data.A} onChange={handleChange}/>
                     <label htmlFor={data.A}>{data.A}</label>

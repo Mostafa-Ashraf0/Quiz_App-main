@@ -17,6 +17,9 @@ const ExamSubmit = ()=>{
         const navigate = useNavigate();
 
         useEffect(() => {
+          if(localStorage.getItem("submitted") === "1" && localStorage.getItem("examId") === examId){
+            navigate('/submittedBefore');
+          }
           if (!examId) return;
           addQuestion([]);//make sure not to add questions from another exam
           const fectchQuestion = async()=>{
@@ -49,6 +52,10 @@ const ExamSubmit = ()=>{
         const newSubmition = {...submition,grade:finalGrade}
         const submitRef = collection(db, `exam/${examId}/submitions`);
         await addDoc(submitRef, newSubmition);
+
+        // navigate if submitted
+        localStorage.setItem("submitted","1")
+        localStorage.setItem("examId",examId)
         console.log(newSubmition);
         setSubmition({name:"", q:[]});
         navigate("/finalResult");
