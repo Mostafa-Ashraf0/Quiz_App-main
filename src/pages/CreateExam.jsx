@@ -1,7 +1,7 @@
-import Header from './Header';
-import Sidebar from './Sidebar';
-import MainContent from './MainContenet';
-import Exam from './Exam'
+import Header from '../components/Header';
+import Sidebar from '../components/Sidebar';
+import MainContent from '../components/MainContenet';
+import Exam from '../components/Exam'
 export default function Home(){
     return (
         <div className='h-100'>

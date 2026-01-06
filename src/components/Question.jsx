@@ -1,8 +1,8 @@
-import { useAuth } from "./context/AuthContext"
-import { db } from './firebase';
+import { useAuth } from "../context/AuthContext"
+import { db } from '../firebase';
 import { doc, deleteDoc } from 'firebase/firestore';
 import toast from "react-hot-toast";
-import './assets/question.css';
+import '../assets/question.css';
 
 function Question({data,index}) {
     const {setUpdateFormView,setCurrentUpdateData,examId} = useAuth();

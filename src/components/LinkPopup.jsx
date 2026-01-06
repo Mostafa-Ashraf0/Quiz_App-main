@@ -1,5 +1,5 @@
-import { useAuth } from './context/AuthContext';
-import './assets/linkPopup.css';
+import { useAuth } from '../context/AuthContext';
+import '../assets/linkPopup.css';
 import toast from 'react-hot-toast';
 
 const LinkPopup = ({link})=>{

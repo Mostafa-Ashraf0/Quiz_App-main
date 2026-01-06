@@ -1,5 +1,5 @@
-import { useAuth } from "./context/AuthContext";
-import './assets/finalResult.css';
+import { useAuth } from "../context/AuthContext";
+import '../assets/finalResult.css';
 
 const FinalResult = ()=>{
     const {grade, question} = useAuth();

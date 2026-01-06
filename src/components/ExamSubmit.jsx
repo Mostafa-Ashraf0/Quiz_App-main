@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import Question from "./Question";
 import QuestionForm from "./QuestionForm";
 import QuestionUpdateForm from "./QuestionUpdateForm";
-import { useAuth } from "./context/AuthContext"
+import { useAuth } from "../context/AuthContext"
 import { addDoc, collection, getDocs } from "firebase/firestore"; 
-import {db} from "./firebase";
+import {db} from "../firebase";
 import Form from 'react-bootstrap/Form';
 import QuestionSubmit from "./QuestionSubmit";
 import { useParams, useNavigate } from "react-router-dom";

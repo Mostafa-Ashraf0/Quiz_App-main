@@ -1,7 +1,7 @@
-import './assets/sidebar.css';
-import logo from './assets/logo.svg';
-import miniLogo from './assets/miniLogo.png';
-import { useAuth } from './context/AuthContext';
+import '../assets/sidebar.css';
+import logo from '../assets/logo.svg';
+import miniLogo from '../assets/miniLogo.png';
+import { useAuth } from '../context/AuthContext';
 import {Timestamp} from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom';
 

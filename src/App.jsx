@@ -1,17 +1,17 @@
 import './assets/App.css';
-import Home from './Home';
-import Signup from './Signup'
-import Signin from './Signin';
-import ForgotPassword from './ForgotPassword';
-import SubmitForm from './SubmitForm';
+import Home from './pages/Home';
+import Signup from './components/Signup'
+import Signin from './components/Signin';
+import ForgotPassword from './components/ForgotPassword';
+import SubmitForm from './components/SubmitForm';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Exam from './Exam';
-import Results from './Results';
-import ExamSubmit from './ExamSubmit';
-import FinalResult from './FinalResult';
-import SubmittedBefore from './SubmittedBefore';
-import CreateExam from './CreateExam';
-import PrivateRoute from './PrivateRoutes';
+import Exam from './components/Exam';
+import Results from './pages/Results';
+import ExamSubmit from './components/ExamSubmit';
+import FinalResult from './components/FinalResult';
+import SubmittedBefore from './components/SubmittedBefore';
+import CreateExam from './pages/CreateExam';
+import PrivateRoute from './components/PrivateRoutes';
 import { Toaster } from 'react-hot-toast';
 
 function App() {

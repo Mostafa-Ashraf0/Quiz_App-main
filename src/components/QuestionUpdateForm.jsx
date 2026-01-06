@@ -1,8 +1,8 @@
 import Form from 'react-bootstrap/Form';
-import './assets/questionUpdateForm.css';
-import { useAuth } from "./context/AuthContext";
+import '../assets/questionUpdateForm.css';
+import { useAuth } from "../context/AuthContext";
 import { useState } from 'react';
-import { db } from './firebase';
+import { db } from '../firebase';
 import { updateDoc, doc } from 'firebase/firestore';
 import toast from 'react-hot-toast';
 

@@ -1,5 +1,5 @@
-import './assets/mainContent.css'
-import { useAuth } from './context/AuthContext';
+import '../assets/mainContent.css'
+import { useAuth } from '../context/AuthContext';
 
 
 const MainContent = ({children})=>{

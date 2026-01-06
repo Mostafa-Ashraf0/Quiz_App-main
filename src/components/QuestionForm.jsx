@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { addDoc, collection, onSnapshot } from "firebase/firestore"; 
-import { db } from "./firebase";
+import { db } from "../firebase";
 import Form from 'react-bootstrap/Form';
 import toast from "react-hot-toast";
-import './assets/questionForm.css';
+import '../assets/questionForm.css';
 
 export default function QuestionForm() {
     const { addQuestion, examId } = useAuth();

@@ -1,6 +1,6 @@
 import { getDocs,collection } from "firebase/firestore";
-import {db} from "./firebase";
-import { useAuth } from "./context/AuthContext";
+import {db} from "../firebase";
+import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 
 const ExamResults = ()=>{

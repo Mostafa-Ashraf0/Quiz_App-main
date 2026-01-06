@@ -1,11 +1,11 @@
 import {Card,Form,Button,Alert} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useAuth } from './context/AuthContext'
+import { useAuth } from '../context/AuthContext'
 import { useRef, useState } from 'react';
-import {db} from "./firebase"
+import {db} from "../firebase"
 import { useNavigate } from 'react-router-dom';
 import { doc, setDoc, Timestamp } from "firebase/firestore"; 
-import './assets/signup.css';
+import '../assets/signup.css';
 
 function Signup() {
     const navigate = useNavigate();

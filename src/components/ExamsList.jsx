@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useAuth } from './context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import { collection, addDoc,Timestamp, getDocs} from "firebase/firestore"; 
-import {db} from "./firebase";
+import {db} from "../firebase";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './assets/examsList.css';
+import '../assets/examsList.css';
 import LinkPopup from './LinkPopup';
 import DeletePopup from './DeletePopup';
 import toast from 'react-hot-toast';

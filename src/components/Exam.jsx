@@ -2,11 +2,11 @@ import { useEffect, useState } from "react"
 import Question from "./Question"
 import QuestionForm from "./QuestionForm";
 import QuestionUpdateForm from "./QuestionUpdateForm";
-import { useAuth } from "./context/AuthContext"
+import { useAuth } from "../context/AuthContext"
 import { collection, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore"; 
-import {db} from "./firebase";
+import {db} from "../firebase";
 import Form from 'react-bootstrap/Form';
-import './assets/exam.css';
+import '../assets/exam.css';
 
 export default function Exam(){
     const {question,setExamId,examId,addQuestion,user,updateFormView} = useAuth();

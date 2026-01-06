@@ -1,8 +1,8 @@
 import { signOut } from 'firebase/auth';
-import {auth} from './firebase';
-import { useAuth } from './context/AuthContext';
+import {auth} from '../firebase';
+import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
-import './assets/header.css';
+import '../assets/header.css';
 import toast from 'react-hot-toast';
 
 const Header = ({title})=>{

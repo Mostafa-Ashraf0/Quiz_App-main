@@ -1,7 +1,7 @@
-import { useAuth } from './context/AuthContext';
-import './assets/deletePopup.css';
+import { useAuth } from '../context/AuthContext';
+import '../assets/deletePopup.css';
 import { collection,Timestamp, getDocs, deleteDoc,doc} from "firebase/firestore"; 
-import {db} from "./firebase";
+import {db} from "../firebase";
 import toast from 'react-hot-toast';
 import { useState } from 'react';
 
