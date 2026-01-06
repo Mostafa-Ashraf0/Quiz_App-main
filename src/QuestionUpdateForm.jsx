@@ -1,5 +1,5 @@
 import Form from 'react-bootstrap/Form';
-import './questionUpdateForm.css';
+import './assets/questionUpdateForm.css';
 import { useAuth } from "./context/AuthContext";
 import { useState } from 'react';
 import { db } from './firebase';
