@@ -1,4 +1,15 @@
-.login{
+.container{
+    width: 100%;
+}
+
+
+.container .image{
+    width: 50%;
+}
+
+
+.container .login{
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
