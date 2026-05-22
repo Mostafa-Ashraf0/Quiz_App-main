@@ -4,42 +4,77 @@ import miniLogo from '../assets/miniLogo.png';
 import { useAuth } from '../context/AuthContext';
 import {Timestamp} from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom';
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarHeader,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton
+} from "@/components/ui/sidebar"
 
-const Sidebar = ()=>{
+const SideBar = ()=>{
     const navigate = useNavigate();
     const {mini,setMini,activeTab,setActiveTab} = useAuth();
-    const handleDashboard = ()=>{
+     const items = [
+    {
+      title: "Dashboard",
+      icon: "fa-solid fa-grip",
+      key: "home",
+      onClick: () => {
         navigate("/home");
         setActiveTab("home");
-    }
+      },
+    },
+    {
+      title: "Analytics",
+      icon: "fa-solid fa-chart-simple",
+      key: "analytics",
+      onClick: () => setActiveTab("analytics"),
+    },
+    {
+      title: "Settings",
+      icon: "fa-solid fa-gears",
+      key: "settings",
+      onClick: () => setActiveTab("settings"),
+    },
+    {
+      title: "Toggle",
+      icon: "fa-solid fa-expand",
+      key: "toggle",
+      onClick: () => setMini(!mini),
+    },
+  ];
 
-    const handleAnalytics = ()=>{
-        setActiveTab("analytics");
-    }
 
-    const handleSettings = ()=>{
-        setActiveTab("settings");
-    }
-
-    const handleSize = ()=>{
-        setMini(!mini);
-    }
 
     return(
-        <div className={`sidebar ${mini && "mini"}`}>
-            <div className='icon'>
-                <img className='logo' src={mini?miniLogo:logo} alt="logo" />
-            </div>
-            <div className="master">
-                <ul>
-                    <li onClick={handleDashboard} className={activeTab==="home"?"tab active":"tab"}><i className="fa-solid fa-grip"></i><span>Dashboard</span></li>
-                    <li onClick={handleAnalytics} className={activeTab==="analytics"?"tab active": "tab"}><i className="fa-solid fa-chart-simple"></i><span>Analytics</span></li>
-                    <li onClick={handleSettings} className={activeTab==="settings"?"tab active": "tab"}><i className="fa-solid fa-gears"></i><span>Settings</span></li>
-                    <li onClick={handleSize} className="tab"><i className="fa-solid fa-expand"></i><span>Toggle</span></li>
-                </ul>
-            </div>
-        </div>
+    <SidebarContent>
+        <SidebarHeader>
+            <img src={logo} className='icon'/>
+        </SidebarHeader>
+        <SidebarGroup>
+            <SidebarGroupContent>
+            <SidebarMenu>
+                {items.map((item) => (
+                <SidebarMenuItem key={item.key}>
+                    <SidebarMenuButton
+                    isActive={activeTab === item.key}
+                    onClick={item.onClick}
+                    >
+                    <i className={item.icon} />
+                    <span>{item.title}</span>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+                ))}
+            </SidebarMenu>
+            </SidebarGroupContent>
+        </SidebarGroup>
+    </SidebarContent>
     )
 };
 
-export default Sidebar;
+export default SideBar;

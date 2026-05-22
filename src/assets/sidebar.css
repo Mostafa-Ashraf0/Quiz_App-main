@@ -8,11 +8,10 @@
     flex-direction: column;
     padding: 0;
     border: solid 1px rgb(230, 230, 230);
-    background-color: #0F1E33;
 }
 
 
-.sidebar .icon{
+.icon{
     height: 70px;
     margin-bottom: 10px;
     border-bottom: solid 1px white;

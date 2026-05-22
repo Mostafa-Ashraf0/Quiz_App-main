@@ -1,14 +1,32 @@
 import ExamsList from '../components/ExamsList';
 import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import SideBar from '../components/Sidebar';
 import MainContent from '../components/MainContenet';
-export default function Home(){
-    return (
-        <div className='h-100'>
-            <Header title={"Dashboard"}/>
-            <Sidebar/>
-            <MainContent>
-                <ExamsList/>
-            </MainContent>
+import { SidebarProvider } from '@/components/ui/sidebar';
+
+export default function Home() {
+  return (
+    <SidebarProvider
+      style={{
+        "--sidebar-background": "0 0% 0%",
+        "--sidebar-foreground": "0 0% 98%",
+      }}
+    >
+      <div className="flex h-screen">
+
+        <SideBar />
+
+        <div className="flex flex-col flex-1">
+
+          <Header title="Dashboard" />
+
+          <MainContent>
+            <ExamsList />
+          </MainContent>
+
         </div>
-)}
+
+      </div>
+    </SidebarProvider>
+  );
+}
