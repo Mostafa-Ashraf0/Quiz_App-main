@@ -29,10 +29,6 @@ function Signin() {
         setLoading(false);
     }
   return (
-    <div className='container'>
-        <div className='image'>
-            
-        </div>
     <div className='login' style={{background:"linear-gradient(120deg, #1e3c72 0%, #2a5298 100%)"}}>
         <h2 className='title mb-5' style={{color:"white"}}>Welcome back to <span style={{color:"#66a6ff",textShadow:"0 0 10px rgba(255,255,255,0.5)",fontSize:"40px"}}>QuizHub</span></h2>
     <Card className='login-main' style={{boxShadow:"0 8px 32px rgba(0, 0, 0, 0.3)",background:"rgba(255, 255, 255, 0.1)",color:"white"}}>
@@ -59,7 +55,6 @@ function Signin() {
     </Card>
     <div className='w-100 text-center mt-2' style={{color:"#66a6ff",textShadow:"0 0 10px rgba(255,255,255,0.5)"}}>Need an account   <Link to='/Signup' style={{color:"white"}}>Sign Up</Link></div>
     <div className='w-100 text-center mt-2'><Link to='/' style={{color:"white"}}>continue as a guest</Link></div>
-    </div>
     </div>
   );
 }
